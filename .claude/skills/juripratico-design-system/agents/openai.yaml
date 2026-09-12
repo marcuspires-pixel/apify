@@ -1,0 +1,4 @@
+interface:
+  display_name: "JuriPrático IA Design System"
+  short_description: "Identidade, interfaces e copy para JuriPrático IA"
+  default_prompt: "Use $juripratico-design-system para criar uma interface ou copy consistente com a marca JuriPrático IA."
