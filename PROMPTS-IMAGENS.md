@@ -57,7 +57,10 @@ Renderização 3D fotorrealista de uma composição de produto sobre fundo azul-
 quase preto, vista de frente e ligeiramente de cima, proporção 16:9.
 
 No centro, um monitor widescreen de moldura fina escura sobre um pé cilíndrico baixo,
-levemente inclinado para trás. A tela mostra uma interface escura de conversa: uma
+levemente inclinado para trás. No topo da tela, o símbolo da marca em turquesa
+(#27E5D4): dois colchetes grossos e deslocados, formando uma figura compacta e
+quadrada — e, ao lado dele, o nome escrito exatamente assim, em uma palavra só:
+JuriPrático IA. Sem separar "Juri" de "Prático". Nenhum outro símbolo na tela. A tela mostra uma interface escura de conversa: uma
 coluna estreita à esquerda com cinco linhas curtas, cada uma precedida por um ponto
 colorido (turquesa, azul, roxo, verde, dourado); e uma área maior à direita com uma
 linha de comando em turquesa no topo, uma frase em branco abaixo e quatro itens de
