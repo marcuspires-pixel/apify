@@ -11,6 +11,22 @@ const CHECKOUT_PRO         = "#";     // trocar pela URL real do checkout do PRO
 const DEPOIMENTOS_PRONTOS  = false;   // só true com depoimentos reais e autorizados por escrito
 const AREA_PADRAO          = null;    // null = ordem padrão dos cards
 
+/* Os seis depoimentos. Só entram na página pessoas reais, com autorização de uso do
+   depoimento e da imagem assinada — ver DEPOIMENTOS.md. A foto é opcional: sem ela o
+   avatar usa as iniciais do nome. Nunca use foto de banco de imagens ou da internet
+   para representar um cliente.
+
+   { texto:  "no máximo 220 caracteres, na palavra da pessoa",
+     nome:   "Nome Completo",
+     oab:    "OAB/SP 123.456",
+     area:   "trabalhista" | "previdenciario" | "familia" | "civel",
+     cidade: "São Paulo/SP",
+     foto:   "depo-1.jpg"        // opcional
+   }
+
+   A seção só aparece com DEPOIMENTOS_PRONTOS = true E os seis preenchidos. */
+const DEPOIMENTOS = [];
+
 /* ------------------------------------------------------------ */
 
 (function () {
@@ -179,8 +195,89 @@ const AREA_PADRAO          = null;    // null = ordem padrão dos cards
   }
 
   /* ---------- 9. Depoimentos: só entram quando forem reais ---------- */
+  var AREAS_ROTULO = {
+    trabalhista:    { rotulo: 'Trabalhista',    cor: '#27E5D4' },
+    previdenciario: { rotulo: 'Previdenciário', cor: '#5B8CFF' },
+    familia:        { rotulo: 'Família',        cor: '#B06CF0' },
+    civel:          { rotulo: 'Cível',          cor: '#3ED598' }
+  };
+
+  function iniciais(nome) {
+    var partes = String(nome).trim().split(/\s+/);
+    var a = partes[0] ? partes[0].charAt(0) : '';
+    var b = partes.length > 1 ? partes[partes.length - 1].charAt(0) : '';
+    return (a + b).toUpperCase();
+  }
+
+  function depoValido(d) {
+    return !!(d && d.texto && d.nome && d.oab && d.cidade && AREAS_ROTULO[d.area]);
+  }
+
+  function cardDepoimento(d) {
+    var info = AREAS_ROTULO[d.area];
+    var art = doc.createElement('article');
+    art.className = 'depo';
+    art.style.setProperty('--ac', info.cor);
+
+    var texto = doc.createElement('p');
+    texto.className = 'depo-texto';
+    texto.textContent = d.texto;
+    art.appendChild(texto);
+
+    var rodape = doc.createElement('footer');
+    rodape.className = 'depo-autor';
+
+    var avatar = doc.createElement('div');
+    avatar.className = 'depo-avatar';
+    if (d.foto) {
+      var img = doc.createElement('img');
+      img.src = d.foto;
+      img.alt = 'Foto de ' + d.nome;
+      img.width = 48; img.height = 48;
+      img.loading = 'lazy';
+      avatar.appendChild(img);
+    } else {
+      avatar.textContent = iniciais(d.nome);
+    }
+    rodape.appendChild(avatar);
+
+    var bloco = doc.createElement('div');
+    var nome = doc.createElement('strong');
+    nome.textContent = d.nome;
+    var linha = doc.createElement('span');
+    linha.textContent = d.oab + ' · ' + info.rotulo + ' · ' + d.cidade;
+    bloco.appendChild(nome);
+    bloco.appendChild(linha);
+    rodape.appendChild(bloco);
+
+    var chip = doc.createElement('span');
+    chip.className = 'depo-area';
+    chip.textContent = info.rotulo;
+    rodape.appendChild(chip);
+
+    art.appendChild(rodape);
+    return art;
+  }
+
   var depos = doc.getElementById('depoimentos');
-  if (depos) { depos.hidden = !DEPOIMENTOS_PRONTOS; }
+  if (depos) {
+    var lista = Array.isArray(DEPOIMENTOS) ? DEPOIMENTOS : [];
+    var completos = lista.length >= 6 && lista.slice(0, 6).every(depoValido);
+
+    if (DEPOIMENTOS_PRONTOS && completos) {
+      var grade = depos.querySelector('.depos');
+      grade.textContent = '';
+      lista.slice(0, 6).forEach(function (d) { grade.appendChild(cardDepoimento(d)); });
+      depos.hidden = false;
+    } else {
+      depos.hidden = true;
+      if (DEPOIMENTOS_PRONTOS && !completos) {
+        // trava de segurança: melhor a seção sumir do que ir ao ar pela metade
+        console.warn('JuriPrático IA: seção de depoimentos mantida oculta — são necessários ' +
+          '6 depoimentos completos (texto, nome, oab, area, cidade) na constante DEPOIMENTOS.');
+      }
+    }
+  }
 
   /* ---------- 10. Ano do rodapé ---------- */
   var ano = doc.getElementById('ano');

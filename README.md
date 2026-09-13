@@ -23,10 +23,11 @@ const DEPOIMENTOS_PRONTOS  = false;   // só true com depoimentos reais e autori
 const AREA_PADRAO          = null;    // null = ordem padrão dos cards de área
 ```
 
-Enquanto `DEPOIMENTOS_PRONTOS` for `false`, a Dobra 10 fica com `hidden` e **não
-aparece na página publicada** — os marcadores `[NOME COMPLETO]`, `[DEPOIMENTO]` e
-`[OAB/UF]` continuam no código, prontos para serem trocados, mas nunca chegam ao
-visitante.
+Os depoimentos vivem na constante `DEPOIMENTOS`, logo abaixo. A Dobra 10 só aparece
+com `DEPOIMENTOS_PRONTOS = true` **e** os seis preenchidos por completo; em qualquer
+outra situação ela sai com `hidden` e nenhum marcador chega ao visitante. A foto é
+opcional — sem ela o avatar usa as iniciais do nome. Ver `DEPOIMENTOS.md` para o
+formato, a mensagem de convite e o texto de autorização.
 
 ## Parâmetro de área
 
