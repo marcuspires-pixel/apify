@@ -22,11 +22,16 @@ const CHECKOUT_PRO         = "#";     // URL do checkout do PRO (R$67)
 const DEPOIMENTOS_PRONTOS  = false;   // só true com depoimentos reais e autorizados por escrito
 const AREA_PADRAO          = null;    // null = ordem padrão dos cards de área
 const HERO_FOTO            = null;    // ex.: "hero-produto.jpg" — null usa a cena em HTML/CSS
+const BONUS_FOTOS          = false;   // true quando bonus-1.jpg … bonus-5.jpg estiverem na raiz
 ```
 
 Para colocar a foto de produto no hero: jogue o arquivo na raiz e aponte `HERO_FOTO`
 para ele. A cena em HTML/CSS sai e a foto entra no mesmo espaço. Se o arquivo não
 existir, a cena volta sozinha — a página nunca fica com um buraco.
+
+As capas dos bônus funcionam igual: com `BONUS_FOTOS = true`, as cinco entram no
+lugar dos placeholders, com `alt` já escrito para cada uma. Arquivo que faltar mantém
+o placeholder só naquele card. Ligue a chave depois de colocar os arquivos, não antes.
 
 Os depoimentos vivem na constante `DEPOIMENTOS`, logo abaixo. A Dobra 10 só aparece
 com `DEPOIMENTOS_PRONTOS = true` **e** os seis preenchidos por completo; em qualquer

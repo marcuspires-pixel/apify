@@ -137,33 +137,108 @@ Sem pessoas, sem rostos, sem mãos.
 
 ## 3 · Capas dos cinco bônus
 
-**Arquivos:** `bonus-1.jpg` a `bonus-5.jpg` — 3:4
+**Arquivos:** `bonus-1.jpg` a `bonus-5.jpg` — 3:4, exporte em 900 × 1200
 **Onde:** Dobra 08, topo de cada card
 
-**Gere sem título escrito na capa.** O nome de cada bônus já aparece em texto logo
-abaixo da imagem, no card — texto duplicado só cria chance de erro de ortografia.
+**Gere sem nenhum texto na capa.** O nome do bônus já aparece em texto logo abaixo da
+imagem, dentro do card. Texto na arte só cria chance de erro de ortografia — e aqui o
+gerador erraria cinco vezes seguidas.
 
-Base comum, trocando só o objeto e a cor da borda:
-
-```
-Renderização 3D fotorrealista, proporção 3:4, de uma capa de material digital flutuando
-levemente inclinada sobre fundo azul-petróleo quase preto. A capa é um cartão vertical
-de superfície escura fosca, com uma fina borda luminosa em OBJETO_COR e um brilho suave
-da mesma cor por trás. No centro da capa, em relevo discreto e sem nenhum texto:
-OBJETO. Sombra de contato abaixo. Sem título, sem palavras, sem números.
-
-[cole aqui o bloco de regras]
-```
-
-| Arquivo | OBJETO | OBJETO_COR |
-|---|---|---|
-| `bonus-1.jpg` | duas bolhas de conversa sobrepostas, linhas simples | turquesa #27E5D4 |
-| `bonus-2.jpg` | um calendário de mesa com um dia destacado | turquesa #27E5D4 |
-| `bonus-3.jpg` | um selo circular liso com fita, **sem emblema, sem brasão e sem sigla** | dourado #F5C451 |
-| `bonus-4.jpg` | um cadeado fechado sobre um documento com tarjas de anonimização | dourado #F5C451 |
-| `bonus-5.jpg` | três cartões retangulares neutros lado a lado, **sem ícone de marca** | dourado #F5C451 |
+**Faça as cinco na mesma sessão, em sequência.** Gere a primeira até ficar boa. Depois,
+para as outras quatro, mande a primeira como anexo e peça: *"mesma capa, mesma
+iluminação, mesmo ângulo — troque apenas o objeto central por [novo objeto] e a cor da
+borda para [nova cor]."* É o que mantém as cinco parecendo um conjunto em vez de cinco
+imagens avulsas.
 
 ---
+
+### bonus-1.jpg — Prompt Advogado Consultor Master
+
+```
+Renderização 3D fotorrealista, proporção 3:4 (vertical), de uma capa de material
+digital flutuando levemente inclinada sobre fundo azul-petróleo quase preto (#070B14).
+
+A capa é um cartão vertical de superfície escura fosca, cantos levemente arredondados,
+com uma fina borda luminosa em turquesa elétrico (#27E5D4) e um brilho suave da mesma
+cor por trás dela.
+
+No centro da capa, em relevo discreto e da mesma cor turquesa: duas bolhas de conversa
+sobrepostas, desenhadas em linha fina, sem nada escrito dentro.
+
+Luz de estúdio suave vinda de cima à esquerda. Sombra de contato abaixo da capa.
+Foco nítido, leve profundidade de campo.
+
+Sem nenhum texto, número, letra, logotipo, marca ou símbolo de empresa na imagem.
+Sem pessoas. Sem martelo de juiz, balança da justiça, coluna grega, robô ou cérebro.
+```
+
+### bonus-2.jpg — Mestre de Prazos
+
+```
+[mesmo bloco acima, trocando o parágrafo do objeto por:]
+
+No centro da capa, em relevo discreto e da mesma cor turquesa: um calendário de mesa
+visto de frente, desenhado em linha fina, com um único dia destacado por um contorno
+mais forte. Sem números legíveis, sem nomes de mês.
+```
+
+Borda e brilho: **turquesa #27E5D4**.
+
+### bonus-3.jpg — Guia de Conformidade OAB
+
+```
+[mesmo bloco, trocando o parágrafo do objeto por:]
+
+No centro da capa, em relevo discreto e da cor da borda: um selo circular liso com uma
+fita presa embaixo, desenhado em linha fina. O selo é completamente liso por dentro —
+sem brasão, sem emblema, sem escudo, sem sigla e sem nenhuma inscrição.
+```
+
+Borda e brilho: **dourado #F5C451**.
+
+> Atenção neste: o emblema da OAB é marca registrada e não pode ser reproduzido nem
+> imitado. Se o gerador colocar qualquer brasão, escudo ou letra dentro do selo,
+> descarte e gere de novo.
+
+### bonus-4.jpg — Protocolo de Sigilo e LGPD
+
+```
+[mesmo bloco, trocando o parágrafo do objeto por:]
+
+No centro da capa, em relevo discreto e da cor da borda: um cadeado fechado apoiado
+sobre uma folha de documento, desenhados em linha fina. Na folha, três tarjas sólidas
+cobrindo onde estaria o texto, como numa anonimização. Sem nenhuma palavra visível.
+```
+
+Borda e brilho: **dourado #F5C451**.
+
+### bonus-5.jpg — Guia de outras ferramentas
+
+```
+[mesmo bloco, trocando o parágrafo do objeto por:]
+
+No centro da capa, em relevo discreto e da cor da borda: três cartões retangulares
+iguais e neutros, lado a lado e levemente sobrepostos, desenhados em linha fina. Os
+cartões são vazios por dentro — sem ícone, sem logotipo, sem letra e sem símbolo de
+nenhum aplicativo ou empresa.
+```
+
+Borda e brilho: **dourado #F5C451**.
+
+---
+
+### Quando as cinco estiverem prontas
+
+Salve como `bonus-1.jpg` … `bonus-5.jpg` na raiz do projeto, em 900 × 1200, até 180 KB
+cada. Depois, no topo do `app.js`:
+
+```js
+const BONUS_FOTOS = true;
+```
+
+As cinco capas entram no lugar dos placeholders, com `alt` descritivo já escrito para
+cada uma. Se algum arquivo faltar, aquele card específico mantém o placeholder — os
+outros quatro aparecem normalmente.
 
 ## 4 · Depoimentos
 

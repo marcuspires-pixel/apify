@@ -11,6 +11,7 @@ const CHECKOUT_PRO         = "#";     // trocar pela URL real do checkout do PRO
 const DEPOIMENTOS_PRONTOS  = false;   // só true com depoimentos reais e autorizados por escrito
 const AREA_PADRAO          = null;    // null = ordem padrão dos cards
 const HERO_FOTO            = null;    // ex.: "hero-produto.jpg" — null usa a cena em HTML/CSS
+const BONUS_FOTOS          = false;   // true quando bonus-1.jpg … bonus-5.jpg estiverem na raiz
 
 /* Os seis depoimentos. Só entram na página pessoas reais, com autorização de uso do
    depoimento e da imagem assinada — ver DEPOIMENTOS.md. A foto é opcional: sem ela o
@@ -296,7 +297,29 @@ const DEPOIMENTOS = [];
     foto.remove();
   }
 
-  /* ---------- 11. Ano do rodapé ---------- */
+  /* ---------- 11. Capas dos bônus: entram no lugar dos placeholders ---------- */
+  if (BONUS_FOTOS) {
+    Array.prototype.forEach.call(doc.querySelectorAll('.bonus-img[data-foto]'), function (caixa) {
+      var img = doc.createElement('img');
+      img.className = 'bonus-foto';
+      img.alt = caixa.getAttribute('data-alt') || '';
+      img.width = 900; img.height = 1200;
+      img.loading = 'lazy';
+      img.hidden = true;
+      // precisa estar no DOM antes do src: imagem lazy solta nunca chega a carregar
+      caixa.appendChild(img);
+      img.addEventListener('load', function () {
+        var ph = caixa.querySelector('.ph');
+        if (ph) { ph.remove(); }
+        img.hidden = false;
+      });
+      // arquivo ausente: o placeholder continua no lugar
+      img.addEventListener('error', function () { img.remove(); });
+      img.src = caixa.getAttribute('data-foto');
+    });
+  }
+
+  /* ---------- 12. Ano do rodapé ---------- */
   var ano = doc.getElementById('ano');
   if (ano) { ano.textContent = new Date().getFullYear(); }
 })();
