@@ -584,3 +584,210 @@ table.comp .val{color:var(--t-hi);font-family:var(--ff-mono);font-size:13px}
   .caret{animation:none;opacity:1}
   .bonus-card:hover .bonus-img .ph{transform:none}
 }
+
+/* ============================================================
+   CENA DE PRODUTO (Dobras 05 e 09)
+   Composição em camadas: peças ao fundo à esquerda, lombadas dos
+   departamentos ao fundo à direita, monitor com o painel no centro,
+   notebook e celular na frente. Tudo em HTML/CSS, escalado por cqw.
+   ============================================================ */
+.cena{
+  position:relative;container-type:inline-size;
+  width:100%;aspect-ratio:2/1;isolation:isolate;
+}
+.cena::after{
+  content:"";position:absolute;left:50%;bottom:1.5cqw;transform:translateX(-50%);
+  width:74cqw;height:7cqw;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(0,0,0,.72),transparent 76%);
+  filter:blur(1.6cqw);
+}
+.cena::before{
+  content:"";position:absolute;inset:6% 6% 2%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(46% 46% at 38% 38%,rgba(39,229,212,.24),transparent 70%),
+    radial-gradient(44% 44% at 68% 52%,rgba(91,140,255,.22),transparent 70%);
+  filter:blur(36px);
+}
+
+/* --- fundo esquerdo: peças impressas --- */
+.cena-folhas{position:absolute;left:1.5cqw;top:4cqw;width:23cqw;height:22cqw;z-index:1}
+.cena-folhas span{
+  position:absolute;inset:0;border-radius:.35cqw;background:#E6E9EF;
+  box-shadow:0 1.6cqw 3cqw rgba(0,0,0,.5);
+}
+.cena-folhas span:first-child{transform:rotate(-7deg);background:#D5DAE4}
+.cena-folhas span:last-child{
+  transform:rotate(-3deg);background-color:#EFF1F5;
+  background-image:repeating-linear-gradient(180deg,transparent 0 1cqw,rgba(20,30,51,.13) 1cqw 1.34cqw);
+  background-size:74% 66%;background-position:13% 14%;background-repeat:no-repeat;
+}
+
+/* --- fundo direito: lombadas dos cinco departamentos --- */
+.cena-binders{
+  position:absolute;right:1.5cqw;top:4cqw;z-index:1;
+  display:flex;align-items:flex-start;gap:.55cqw;margin:0;padding:0;list-style:none;
+}
+.cena-binders li{
+  width:4.3cqw;height:26cqw;border-radius:.4cqw .4cqw .2cqw .2cqw;
+  background:linear-gradient(180deg,#162034,#0B1322);
+  border:1px solid rgba(255,255,255,.09);border-top:.3cqw solid var(--ac);
+  box-shadow:0 1.6cqw 3cqw rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);
+  display:flex;flex-direction:column;align-items:center;gap:.7cqw;padding:.85cqw .3cqw;
+}
+.cena-binders i{font-style:normal;font-family:var(--ff-mono);font-size:.95cqw;color:var(--ac);flex:none}
+.cena-binders b{
+  writing-mode:vertical-rl;transform:rotate(180deg);flex:none;
+  font-family:var(--ff-mono);font-weight:600;font-size:.88cqw;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--t-mid);white-space:nowrap;
+}
+
+/* --- monitor --- */
+.cena-monitor{position:absolute;left:50%;top:1cqw;transform:translateX(-50%);width:50cqw;z-index:2}
+.cena-tela{
+  border-radius:1.1cqw;padding:.85cqw;
+  background:linear-gradient(160deg,#2B3850,#151E31);
+  box-shadow:0 3.2cqw 6cqw rgba(0,0,0,.62),inset 0 1px 0 rgba(255,255,255,.10);
+}
+.cena-pe{width:5.4cqw;height:3cqw;margin:0 auto;background:linear-gradient(180deg,#26334B,#161F33)}
+.cena-base{
+  width:17cqw;height:.95cqw;margin:0 auto;border-radius:.5cqw;
+  background:linear-gradient(180deg,#2E3C57,#141C2E);
+  box-shadow:0 1.4cqw 2.6cqw rgba(0,0,0,.55);
+}
+
+/* --- o painel --- */
+.painel{border-radius:.6cqw;overflow:hidden;background:#0A1120;border:1px solid rgba(255,255,255,.07)}
+.painel-top{
+  display:flex;align-items:center;gap:1cqw;padding:.75cqw 1cqw;
+  background:#0D1626;border-bottom:1px solid rgba(255,255,255,.07);
+}
+.painel-marca{
+  display:flex;align-items:center;gap:.45cqw;white-space:nowrap;
+  font-family:var(--ff-display);font-weight:700;font-size:1.05cqw;letter-spacing:-.02em;color:#fff;
+}
+.painel-marca svg{width:1.35cqw;height:1.35cqw;color:var(--glow);flex:none}
+.painel-abas{display:flex;gap:.4cqw;margin-left:auto}
+.painel-abas b{
+  font-family:var(--ff-mono);font-weight:400;font-size:.88cqw;
+  padding:.35cqw .7cqw;border-radius:.35cqw;color:#8493AD;background:rgba(255,255,255,.04);
+}
+.painel-abas b.on{color:var(--glow);background:rgba(39,229,212,.10);box-shadow:inset 0 0 0 1px rgba(39,229,212,.32)}
+
+.painel-corpo{display:grid;grid-template-columns:15cqw 1fr;min-height:22cqw}
+.painel-side{padding:1cqw .85cqw;border-right:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.018)}
+.painel-side > p{
+  font-family:var(--ff-mono);font-size:.78cqw;letter-spacing:.16em;
+  text-transform:uppercase;color:#8493AD;margin-bottom:.85cqw;
+}
+.painel-side ul{list-style:none;margin:0;padding:0;display:grid;gap:.62cqw}
+.painel-side li{display:flex;align-items:center;gap:.45cqw;font-size:.82cqw;line-height:1.25;color:var(--t-mid);white-space:nowrap}
+.painel-side li::before{content:"";width:.42cqw;height:.42cqw;border-radius:50%;background:var(--ac);flex:none}
+.painel-side li span{margin-left:auto;font-family:var(--ff-mono);font-size:.78cqw;color:#8493AD}
+.painel-side li.on{color:#fff;font-weight:600}
+
+.painel-main{padding:1.3cqw 1.4cqw}
+.painel-main .p-cmd{font-family:var(--ff-mono);font-size:1.12cqw;color:var(--glow);margin-bottom:1.1cqw}
+.painel-main .p-ans{font-size:1.12cqw;color:#E4EBF6;margin-bottom:1cqw}
+.painel-main .p-lista{list-style:none;margin:0 0 1.1cqw;padding:0;display:grid;gap:.72cqw}
+.painel-main .p-lista li{display:flex;align-items:center;gap:.7cqw;font-size:1.02cqw;color:var(--t-mid)}
+.painel-main .p-lista li::before{
+  content:"";width:.45cqw;height:.45cqw;border-radius:50%;flex:none;
+  background:var(--glow);box-shadow:0 0 .7cqw rgba(39,229,212,.9);
+}
+.painel-main .p-caret{display:inline-block;width:.6cqw;height:1.35cqw;background:var(--glow);vertical-align:-.2cqw;animation:blink 1.05s steps(1) infinite}
+.painel-status{
+  display:flex;gap:1.3cqw;padding:.62cqw 1cqw;
+  background:#0D1626;border-top:1px solid rgba(255,255,255,.07);
+  font-family:var(--ff-mono);font-size:.78cqw;letter-spacing:.1em;text-transform:uppercase;color:#8493AD;
+}
+
+/* --- notebook, à frente e à esquerda --- */
+.cena-laptop{position:absolute;left:1cqw;bottom:1.5cqw;width:25cqw;height:21cqw;z-index:3;display:flex;flex-direction:column;transform:rotate(-1.5deg)}
+.cena-lap-tela{
+  flex:1;min-height:0;display:flex;
+  border-radius:.6cqw .6cqw 0 0;padding:.5cqw .5cqw 0;
+  background:linear-gradient(160deg,#2B3850,#161F33);
+  box-shadow:0 2.2cqw 4.2cqw rgba(0,0,0,.55);
+}
+.cena-doc{flex:1;overflow:hidden;border-radius:.3cqw .3cqw 0 0;background:#FBFBF8;padding:1.1cqw 1cqw;font-family:Georgia,"Times New Roman",serif}
+.cena-doc p{font-family:var(--ff-mono);font-size:.82cqw;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#3A4050;margin-bottom:.9cqw}
+.cena-doc span{display:block;height:.5cqw;border-radius:.2cqw;background:#E3E4E0;margin-bottom:.55cqw}
+.cena-doc .curta{width:66%}
+.cena-doc .marca{
+  background:rgba(255,176,32,.2);border-left:.24cqw solid var(--warn);
+  border-radius:0 .25cqw .25cqw 0;padding:.5cqw .6cqw;margin:.8cqw 0;height:auto;
+  font-family:var(--ff-mono);font-size:.8cqw;color:#6A4B00;letter-spacing:.02em;
+}
+.cena-lap-base{
+  width:106%;margin-left:-3%;height:1.05cqw;flex:none;border-radius:0 0 .7cqw .7cqw;
+  background:linear-gradient(180deg,#35435F,#1A2337);
+  box-shadow:0 1.3cqw 2.2cqw rgba(0,0,0,.5);
+}
+
+/* --- celular, à frente e à direita --- */
+.cena-phone{position:absolute;right:6cqw;bottom:1.5cqw;width:11cqw;height:23cqw;z-index:4;transform:rotate(2deg)}
+.cena-phone-tela{
+  height:100%;border-radius:1.5cqw;padding:1cqw .75cqw;
+  background:#0C1524;border:.28cqw solid #2B3850;
+  box-shadow:0 2.2cqw 4cqw rgba(0,0,0,.58);
+}
+.cena-phone-tela p{font-family:var(--ff-mono);font-size:.72cqw;letter-spacing:.14em;text-transform:uppercase;color:#8493AD;margin-bottom:.8cqw}
+.cena-phone-tela ul{list-style:none;margin:0;padding:0;display:grid;gap:.5cqw}
+.cena-phone-tela li{
+  font-family:var(--ff-mono);font-size:.72cqw;padding:.5cqw .55cqw;border-radius:.35cqw;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--t-mid);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.cena-phone-tela li.on{color:var(--glow);border-color:rgba(39,229,212,.34);background:rgba(39,229,212,.10)}
+
+/* --- variante compacta (Dobra 09): monitor e lombadas --- */
+.cena--compacta{aspect-ratio:2.9/1}
+.cena--compacta::after,
+.cena--compacta .cena-folhas,
+.cena--compacta .cena-laptop,
+.cena--compacta .cena-phone{display:none}
+.cena--compacta .cena-monitor{top:1cqw;width:54cqw}
+.cena--compacta .painel-corpo{min-height:20cqw}
+.cena--compacta .cena-binders{top:3cqw;height:auto}
+.cena--compacta .cena-binders li{height:24cqw}
+.planos-cena{margin-bottom:clamp(26px,3.4vw,44px)}
+
+/* --- mobile: a cena vira painel legível, sem miniaturizar texto --- */
+@media (max-width:860px){
+  .cena,.cena--compacta{aspect-ratio:auto;container-type:normal}
+  .cena::before{inset:0}
+  .cena::after{display:none}
+  .cena-folhas,.cena-laptop,.cena-phone,.cena-pe,.cena-base{display:none}
+  .cena-binders,.cena--compacta .cena-binders{
+    position:static;display:flex;flex-wrap:wrap;justify-content:center;
+    gap:8px;margin-bottom:18px;
+  }
+  .cena-binders li,.cena--compacta .cena-binders li{
+    width:54px;height:172px;border-radius:6px 6px 3px 3px;border-top-width:3px;
+    padding:9px 4px;gap:6px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.45);
+  }
+  .cena-binders i{font-size:11px}
+  .cena-binders b{font-size:8.5px;letter-spacing:.07em}
+  .cena-monitor,.cena--compacta .cena-monitor{position:static;transform:none;width:100%}
+  .cena-tela{border-radius:14px;padding:7px;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+  .painel{border-radius:9px}
+  .painel-top{padding:10px 12px;gap:10px;flex-wrap:wrap}
+  .painel-marca{font-size:14px;gap:6px}
+  .painel-marca svg{width:17px;height:17px}
+  .painel-abas b{font-size:10.5px;padding:5px 9px;border-radius:5px}
+  .painel-corpo{grid-template-columns:1fr;min-height:0}
+  .painel-side{border-right:0;border-bottom:1px solid rgba(255,255,255,.07);padding:14px 14px 15px}
+  .painel-side > p{font-size:10px;margin-bottom:11px}
+  .painel-side ul{gap:9px}
+  .painel-side li{font-size:13px}
+  .painel-side li::before{width:6px;height:6px}
+  .painel-side li span{font-size:11px}
+  .painel-main{padding:16px 14px 18px}
+  .painel-main .p-cmd{font-size:13px;margin-bottom:13px}
+  .painel-main .p-ans{font-size:14px;margin-bottom:12px}
+  .painel-main .p-lista{gap:9px;margin-bottom:12px}
+  .painel-main .p-lista li{font-size:13px;gap:9px}
+  .painel-main .p-lista li::before{width:6px;height:6px}
+  .painel-main .p-caret{width:8px;height:17px;vertical-align:-3px}
+  .painel-status{padding:9px 12px;gap:12px;font-size:10px;flex-wrap:wrap}
+}
