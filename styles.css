@@ -258,7 +258,7 @@ section[id]{scroll-margin-top:86px}
 .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .ba-col{position:relative;border-radius:var(--r-lg);padding:28px;background:var(--paper-0);border:1px solid var(--paper-line)}
 .ba-col--antes{background:#EDEFF4;border-color:#DCE1EA}
-.ba-col--antes .ba-txt{color:#6B7486}
+.ba-col--antes .ba-txt{color:#61697B}
 .ba-col--depois{background:var(--paper-0)}
 .ba-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
 .ba-tag{font-family:var(--ff-mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--t-dark-mid)}
@@ -367,10 +367,10 @@ section[id]{scroll-margin-top:86px}
   box-shadow:0 44px 90px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);
   font-family:Georgia,"Times New Roman",serif;
 }
-.doc-h{font-family:var(--ff-mono);font-size:12px;font-weight:600;letter-spacing:.2em;color:#3A4050;margin-bottom:22px}
+.trust .doc-h{font-family:var(--ff-mono);font-size:12px;font-weight:600;letter-spacing:.2em;color:#3A4050;margin-bottom:22px}
 .doc-line{height:9px;border-radius:3px;background:#E3E4E0;margin-bottom:12px}
 .doc-line.w90{width:90%}.doc-line.w96{width:96%}.doc-line.w72{width:72%}.doc-line.w84{width:84%}
-.doc-flag{
+.trust .doc-flag{
   margin:20px 0;padding:13px 15px;background:rgba(255,176,32,.16);
   border-left:3px solid var(--warn);border-radius:0 6px 6px 0;
   font-family:var(--ff-mono);font-size:12.5px;line-height:1.5;color:#6A4B00;letter-spacing:.02em;
@@ -462,7 +462,8 @@ table.comp .val{color:var(--t-hi);font-family:var(--ff-mono);font-size:13px}
 .depo-area{
   position:absolute;right:20px;bottom:20px;
   font-family:var(--ff-mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  padding:5px 10px;border-radius:999px;border:1px solid var(--ac);color:var(--t-dark);background:color-mix(in srgb,var(--ac) 18%,white);
+  padding:5px 10px;border-radius:999px;border:1px solid var(--ac);color:var(--t-dark);
+  background:#EEF2F7;background:color-mix(in srgb,var(--ac) 18%,white);
 }
 .depo-nota{margin-top:30px;text-align:center;font-family:var(--ff-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--t-dark-mid)}
 
