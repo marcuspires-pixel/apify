@@ -51,11 +51,9 @@
       </div>
     </div>
 
-    <!-- Aponte HERO_FOTO (topo do app.js) para o arquivo e a foto assume o lugar da cena
-         em HTML/CSS. Com HERO_FOTO = null, vale a cena. -->
+    <!-- Aponte FOTOS.hero (topo do app.js) para o arquivo e a foto assume o lugar da
+         cena em HTML/CSS. Com null, vale a cena. -->
     <div class="hero-cena">
-      <img class="hero-foto" id="hero-foto" width="2000" height="1080" hidden
-           alt="Mesa de trabalho de advogado: um monitor exibe o painel do JuriPrático IA com as categorias Peças, Contratos, Pesquisa e Honorários, ao lado de pastas de processo etiquetadas por departamento, pilhas de documentos, notebook, tablet e celulares.">
       <div class="cena rv" role="img" aria-label="Um monitor com o painel do JuriPrático IA: os cinco departamentos na lateral e a instrução de contestação trabalhista perguntando quatro informações antes de escrever. Ao redor, as lombadas dos departamentos, um notebook com a peça marcada com CONFERIR e um celular com os comandos.">
       <div class="cena-folhas" aria-hidden="true"><span></span><span></span></div>
       <ul class="cena-binders" aria-hidden="true">
@@ -154,7 +152,9 @@
         </div>
         <p class="ba-txt">A contestação está em branco. Você abre um modelo antigo de outro caso, apaga o que não serve, tenta lembrar como estruturou as preliminares da última vez. Uma hora depois, ainda está no relatório.</p>
         <!-- substituir pelo <img src="antes.jpg" width="600" height="600" alt="..." loading="lazy"> -->
-        <div class="ph ph--1x1" role="img" aria-label="Espaço reservado para a imagem antes.jpg"><span>antes.jpg</span></div>
+        <div class="ph ph--1x1" role="img" aria-label="Espaço reservado para a imagem antes.jpg"
+             data-foto="antes" data-w="1200" data-h="1200"
+             data-alt="Mesa de advogado às 22h40: documento em branco na tela do notebook, pilha desorganizada de processos e luz baixa de luminária."><span>antes.jpg</span></div>
       </article>
       <article class="ba-col ba-col--depois gborder rv">
         <div class="ba-top">
@@ -163,7 +163,9 @@
         </div>
         <p class="ba-txt">Você cola os fatos e a inicial, escolhe a instrução, e em dois minutos tem preliminares separadas do mérito, impugnação ponto a ponto e pedidos organizados. Aí sim começa o seu trabalho: revisar e decidir.</p>
         <!-- substituir pelo <img src="depois.jpg" width="600" height="600" alt="..." loading="lazy"> -->
-        <div class="ph ph--1x1" role="img" aria-label="Espaço reservado para a imagem depois.jpg"><span>depois.jpg</span></div>
+        <div class="ph ph--1x1" role="img" aria-label="Espaço reservado para a imagem depois.jpg"
+             data-foto="depois" data-w="1200" data-h="1200"
+             data-alt="A mesma mesa organizada: documento já estruturado na tela, papéis empilhados e luz clara com brilho turquesa."><span>depois.jpg</span></div>
       </article>
     </div>
   </div>
@@ -238,7 +240,9 @@
       </article>
     </div>
     <!-- substituir pelo <img src="passos.jpg" width="1280" height="720" alt="..." loading="lazy"> -->
-    <div class="steps-img ph ph--16x9 rv" role="img" aria-label="Espaço reservado para a imagem passos.jpg"><span>passos.jpg</span></div>
+    <div class="steps-img ph ph--16x9 rv" role="img" aria-label="Espaço reservado para a imagem passos.jpg"
+         data-foto="passos" data-w="1280" data-h="720"
+         data-alt="Os quatro passos do JuriPrático IA: instalar as instruções, escolher a tarefa, responder o briefing e receber a primeira versão."><span>passos.jpg</span></div>
   </div>
 </section>
 
@@ -334,31 +338,31 @@
     </div>
     <div class="bonus">
       <article class="bonus-card glass rv">
-        <div class="bonus-img" data-foto="bonus-1.jpg" data-alt="Capa do bônus Prompt Advogado Consultor Master: duas bolhas de conversa holográficas em turquesa, tocadas por uma mão robótica, sobre fundo de malha neural."><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-1.jpg"><span>bonus-1.jpg</span></div></div>
+        <div class="bonus-img"><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-1.jpg" data-foto="bonus-1" data-w="900" data-h="1200" data-alt="Capa do bônus Prompt Advogado Consultor Master: duas bolhas de conversa holográficas em turquesa, tocadas por uma mão robótica, sobre fundo de malha neural."><span>bonus-1.jpg</span></div></div>
         <span class="bonus-selo selo--glow">Start + PRO</span>
         <h3>Prompt Advogado Consultor Master</h3>
         <p>Transforma qualquer conversa em consultoria estruturada, que pergunta antes de responder e separa o que é pacífico do que precisa ser verificado.</p>
       </article>
       <article class="bonus-card glass rv">
-        <div class="bonus-img" data-foto="bonus-2.jpg" data-alt="Capa do bônus Mestre de Prazos: um calendário holográfico em turquesa com um dia marcado, tocado por uma mão robótica, sobre fundo de malha neural."><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-2.jpg"><span>bonus-2.jpg</span></div></div>
+        <div class="bonus-img"><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-2.jpg" data-foto="bonus-2" data-w="900" data-h="1200" data-alt="Capa do bônus Mestre de Prazos: um calendário holográfico em turquesa com um dia marcado, tocado por uma mão robótica, sobre fundo de malha neural."><span>bonus-2.jpg</span></div></div>
         <span class="bonus-selo selo--glow">Start + PRO</span>
         <h3>Mestre de Prazos</h3>
         <p>Organiza a contagem passo a passo, de forma auditável, para você conferir contra o sistema do tribunal.</p>
       </article>
       <article class="bonus-card glass rv">
-        <div class="bonus-img" data-foto="bonus-3.jpg" data-alt="Capa do bônus Guia de Conformidade OAB: um selo circular holográfico dourado e liso, tocado por uma mão robótica, sobre fundo de malha neural."><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-3.jpg"><span>bonus-3.jpg</span></div></div>
+        <div class="bonus-img"><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-3.jpg" data-foto="bonus-3" data-w="900" data-h="1200" data-alt="Capa do bônus Guia de Conformidade OAB: um selo circular holográfico dourado e liso, tocado por uma mão robótica, sobre fundo de malha neural."><span>bonus-3.jpg</span></div></div>
         <span class="bonus-selo selo--gold">Só PRO</span>
         <h3>Guia de Conformidade OAB</h3>
         <p>O que pode e o que não pode na sua divulgação, à luz do Provimento 205/2021 — e como a IA se encaixa nisso.</p>
       </article>
       <article class="bonus-card glass rv">
-        <div class="bonus-img" data-foto="bonus-4.jpg" data-alt="Capa do bônus Protocolo de Sigilo e LGPD: um cadeado holográfico dourado sobre um documento com tarjas de anonimização, tocado por uma mão robótica, sobre fundo de malha neural."><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-4.jpg"><span>bonus-4.jpg</span></div></div>
+        <div class="bonus-img"><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-4.jpg" data-foto="bonus-4" data-w="900" data-h="1200" data-alt="Capa do bônus Protocolo de Sigilo e LGPD: um cadeado holográfico dourado sobre um documento com tarjas de anonimização, tocado por uma mão robótica, sobre fundo de malha neural."><span>bonus-4.jpg</span></div></div>
         <span class="bonus-selo selo--gold">Só PRO</span>
         <h3>Protocolo de Sigilo e LGPD</h3>
         <p>Como anonimizar dados do cliente antes de usar qualquer ferramenta de IA, com checklist e configuração recomendada.</p>
       </article>
       <article class="bonus-card glass rv">
-        <div class="bonus-img" data-foto="bonus-5.jpg" data-alt="Capa do bônus Guia de outras ferramentas: três painéis holográficos dourados flutuando lado a lado, tocados por uma mão robótica, sobre fundo de malha neural."><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-5.jpg"><span>bonus-5.jpg</span></div></div>
+        <div class="bonus-img"><div class="ph ph--3x4" role="img" aria-label="Espaço reservado para a imagem bonus-5.jpg" data-foto="bonus-5" data-w="900" data-h="1200" data-alt="Capa do bônus Guia de outras ferramentas: três painéis holográficos dourados flutuando lado a lado, tocados por uma mão robótica, sobre fundo de malha neural."><span>bonus-5.jpg</span></div></div>
         <span class="bonus-selo selo--gold">Só PRO</span>
         <h3>Guia de outras ferramentas</h3>
         <p>Como usar o pacote no ChatGPT e no Gemini, e o teste de cinco minutos antes de confiar em qualquer ferramenta nova.</p>

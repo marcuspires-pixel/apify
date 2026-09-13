@@ -10,8 +10,22 @@ const CHECKOUT_START       = "#";     // trocar pela URL real do checkout do Sta
 const CHECKOUT_PRO         = "#";     // trocar pela URL real do checkout do PRO (R$67)
 const DEPOIMENTOS_PRONTOS  = false;   // só true com depoimentos reais e autorizados por escrito
 const AREA_PADRAO          = null;    // null = ordem padrão dos cards
-const HERO_FOTO            = null;    // ex.: "hero-produto.jpg" — null usa a cena em HTML/CSS
-const BONUS_FOTOS          = false;   // true quando bonus-1.jpg … bonus-5.jpg estiverem na raiz
+
+/* Imagens. Cada chave vira a foto no lugar do respectivo espaço reservado assim que
+   você aponta para o arquivo. Deixe null enquanto a imagem não existir: a página mostra
+   o espaço reservado (ou, no hero, a cena em HTML/CSS) e nada quebra.
+   Aponte depois de colocar o arquivo na raiz, não antes. */
+const FOTOS = {
+  hero:      null,  // "hero-produto.jpg"  — substitui a cena do topo
+  antes:     null,  // "antes.jpg"
+  depois:    null,  // "depois.jpg"
+  passos:    null,  // "passos.jpg"
+  "bonus-1": null,  // "bonus-1.jpg"
+  "bonus-2": null,  // "bonus-2.jpg"
+  "bonus-3": null,  // "bonus-3.jpg"
+  "bonus-4": null,  // "bonus-4.jpg"
+  "bonus-5": null   // "bonus-5.jpg"
+};
 
 /* Os seis depoimentos. Só entram na página pessoas reais, com autorização de uso do
    depoimento e da imagem assinada — ver DEPOIMENTOS.md. A foto é opcional: sem ela o
@@ -281,42 +295,44 @@ const DEPOIMENTOS = [];
     }
   }
 
-  /* ---------- 10. Foto do hero: assume o lugar da cena quando o arquivo existir ---------- */
-  var foto = doc.getElementById('hero-foto');
-  var cenaHero = doc.querySelector('.hero-cena .cena');
-
-  if (foto && cenaHero && HERO_FOTO) {
-    foto.addEventListener('load', function () {
-      cenaHero.hidden = true;
-      foto.hidden = false;
-    });
-    // se o arquivo apontado não existir, a cena em HTML/CSS continua valendo
-    foto.addEventListener('error', function () { foto.remove(); });
-    foto.src = HERO_FOTO;
-  } else if (foto) {
-    foto.remove();
+  /* ---------- 10. Fotos entram no lugar dos espaços reservados ---------- */
+  function montaFoto(alt, largura, altura, adiada) {
+    var img = doc.createElement('img');
+    img.className = 'foto';
+    img.alt = alt || '';
+    img.width = largura;
+    img.height = altura;
+    if (adiada) { img.loading = 'lazy'; }
+    img.hidden = true;
+    return img;
   }
 
-  /* ---------- 11. Capas dos bônus: entram no lugar dos placeholders ---------- */
-  if (BONUS_FOTOS) {
-    Array.prototype.forEach.call(doc.querySelectorAll('.bonus-img[data-foto]'), function (caixa) {
-      var img = doc.createElement('img');
-      img.className = 'bonus-foto';
-      img.alt = caixa.getAttribute('data-alt') || '';
-      img.width = 900; img.height = 1200;
-      img.loading = 'lazy';
-      img.hidden = true;
-      // precisa estar no DOM antes do src: imagem lazy solta nunca chega a carregar
-      caixa.appendChild(img);
-      img.addEventListener('load', function () {
-        var ph = caixa.querySelector('.ph');
-        if (ph) { ph.remove(); }
-        img.hidden = false;
-      });
-      // arquivo ausente: o placeholder continua no lugar
-      img.addEventListener('error', function () { img.remove(); });
-      img.src = caixa.getAttribute('data-foto');
-    });
+  Array.prototype.forEach.call(doc.querySelectorAll('.ph[data-foto]'), function (ph) {
+    var src = FOTOS[ph.getAttribute('data-foto')];
+    if (!src) { return; }
+    var img = montaFoto(ph.getAttribute('data-alt'),
+                        parseInt(ph.getAttribute('data-w'), 10),
+                        parseInt(ph.getAttribute('data-h'), 10), true);
+    // precisa entrar no DOM antes do src: imagem adiada solta nunca chega a carregar
+    ph.parentNode.insertBefore(img, ph);
+    img.addEventListener('load', function () { ph.remove(); img.hidden = false; });
+    // arquivo ausente: o espaço reservado continua no lugar
+    img.addEventListener('error', function () { img.remove(); });
+    img.src = src;
+  });
+
+  /* no hero a foto substitui a cena inteira, não um espaço reservado */
+  var cenaHero = doc.querySelector('.hero-cena .cena');
+  if (cenaHero && FOTOS.hero) {
+    var heroImg = montaFoto(
+      'Mesa de trabalho de advogado: um monitor exibe o painel do JuriPrático IA com as ' +
+      'categorias Peças, Contratos, Pesquisa e Honorários, ao lado de pastas de processo ' +
+      'etiquetadas por departamento, pilhas de documentos, notebook, tablet e celulares.',
+      2000, 1080, false);
+    cenaHero.parentNode.insertBefore(heroImg, cenaHero);
+    heroImg.addEventListener('load', function () { cenaHero.hidden = true; heroImg.hidden = false; });
+    heroImg.addEventListener('error', function () { heroImg.remove(); });
+    heroImg.src = FOTOS.hero;
   }
 
   /* ---------- 12. Ano do rodapé ---------- */

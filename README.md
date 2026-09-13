@@ -21,17 +21,33 @@ const CHECKOUT_START       = "#";     // URL do checkout do Start (R$27)
 const CHECKOUT_PRO         = "#";     // URL do checkout do PRO (R$67)
 const DEPOIMENTOS_PRONTOS  = false;   // só true com depoimentos reais e autorizados por escrito
 const AREA_PADRAO          = null;    // null = ordem padrão dos cards de área
-const HERO_FOTO            = null;    // ex.: "hero-produto.jpg" — null usa a cena em HTML/CSS
-const BONUS_FOTOS          = false;   // true quando bonus-1.jpg … bonus-5.jpg estiverem na raiz
+
+const FOTOS = {
+  hero:      null,  // "hero-produto.jpg"  — substitui a cena do topo
+  antes:     null,  // "antes.jpg"
+  depois:    null,  // "depois.jpg"
+  passos:    null,  // "passos.jpg"
+  "bonus-1": null,  // "bonus-1.jpg"
+  ...
+};
 ```
 
-Para colocar a foto de produto no hero: jogue o arquivo na raiz e aponte `HERO_FOTO`
-para ele. A cena em HTML/CSS sai e a foto entra no mesmo espaço. Se o arquivo não
-existir, a cena volta sozinha — a página nunca fica com um buraco.
+Os depoimentos vivem na constante `DEPOIMENTOS`, logo abaixo. A Dobra 10 só aparece
+com `DEPOIMENTOS_PRONTOS = true` **e** os seis preenchidos por completo; em qualquer
+outra situação ela sai com `hidden` e nenhum marcador chega ao visitante. A foto é
+opcional — sem ela o avatar usa as iniciais do nome. Ver `DEPOIMENTOS.md` para o
+formato, a mensagem de convite e o texto de autorização.
 
-As capas dos bônus funcionam igual: com `BONUS_FOTOS = true`, as cinco entram no
-lugar dos placeholders, com `alt` já escrito para cada uma. Arquivo que faltar mantém
-o placeholder só naquele card. Ligue a chave depois de colocar os arquivos, não antes.
+## Imagens
+
+Cada chave de `FOTOS` corresponde a um espaço reservado da página. Coloque o arquivo na
+raiz do projeto, aponte a chave para ele, e a foto entra no lugar — com `alt` descritivo
+e dimensões já declaradas, sem salto de layout. No hero, a foto substitui a cena inteira
+em HTML/CSS; nos outros pontos, o espaço reservado.
+
+Aponte a chave só depois de colocar o arquivo. Se o arquivo apontado não existir, aquele
+ponto específico volta ao espaço reservado e o resto da página segue normal — nunca fica
+um buraco.
 
 Os depoimentos vivem na constante `DEPOIMENTOS`, logo abaixo. A Dobra 10 só aparece
 com `DEPOIMENTOS_PRONTOS = true` **e** os seis preenchidos por completo; em qualquer

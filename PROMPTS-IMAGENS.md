@@ -214,11 +214,18 @@ Salve como `bonus-1.jpg` … `bonus-5.jpg` na raiz do projeto, 900 × 1200, até
 Depois, no topo do `app.js`:
 
 ```js
-const BONUS_FOTOS = true;
+const FOTOS = {
+  ...
+  "bonus-1": "bonus-1.jpg",
+  "bonus-2": "bonus-2.jpg",
+  "bonus-3": "bonus-3.jpg",
+  "bonus-4": "bonus-4.jpg",
+  "bonus-5": "bonus-5.jpg"
+};
 ```
 
-As cinco entram no lugar dos placeholders, com `alt` descritivo já escrito. Se algum
-arquivo faltar, só aquele card mantém o placeholder.
+As cinco entram no lugar dos espaços reservados, com `alt` descritivo já escrito. Se
+algum arquivo faltar, só aquele card mantém o espaço reservado.
 
 ## 4 · Depoimentos
 
@@ -241,6 +248,6 @@ Exporte em JPG de qualidade alta, no dobro do tamanho de exibição:
 | `antes.jpg` / `depois.jpg` | 1200 × 1200 | até 220 KB |
 | `bonus-1..5.jpg` | 900 × 1200 | até 180 KB |
 
-Coloque na raiz do projeto, ao lado do `index.html`, e me avise: eu troco os
-placeholders, declaro `width`/`height` para não haver salto de layout, escrevo o `alt`
-de cada uma e confiro o contraste do texto que ficar por cima.
+Coloque na raiz do projeto, ao lado do `index.html`, e aponte a chave correspondente em
+`FOTOS`, no topo do `app.js`. O `alt` e as dimensões de cada uma já estão escritos no
+código — não é preciso mexer em mais nada.
