@@ -213,11 +213,12 @@ section[id]{scroll-margin-top:86px}
 .hdr.is-stuck .hdr-cta{background:var(--glow);border-color:var(--glow);color:#04231F}
 
 /* ---------- 01 hero ---------- */
-.hero{padding-top:clamp(110px,16vw,168px)}
-.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(34px,5vw,60px);align-items:center}
-.hero h1{margin:22px 0 24px}
-.hero .lead{color:var(--t-mid);max-width:56ch;margin-bottom:34px}
-.hero-cta{display:flex;flex-direction:column;align-items:flex-start}
+.hero{padding-top:clamp(106px,15vw,160px)}
+.hero-topo{max-width:880px;margin-inline:auto;text-align:center}
+.hero h1{margin:22px 0 24px;text-wrap:balance}
+.hero .lead{color:var(--t-mid);max-width:60ch;margin:0 auto 34px}
+.hero-cta{display:flex;flex-direction:column;align-items:center}
+.hero-cena{margin-top:clamp(36px,5vw,58px)}
 
 /* terminal */
 .term{
@@ -536,8 +537,6 @@ table.comp .val{color:var(--t-hi);font-family:var(--ff-mono);font-size:13px}
 
 /* ---------- responsivo ---------- */
 @media (max-width:1000px){
-  .hero-grid{grid-template-columns:1fr;gap:44px}
-  .hero h1{max-width:none}
   .trust{grid-template-columns:1fr;gap:44px}
   .doc{transform:rotate(-1deg)}
   .planos{grid-template-columns:1fr}
@@ -790,4 +789,9 @@ table.comp .val{color:var(--t-hi);font-family:var(--ff-mono);font-size:13px}
   .painel-main .p-lista li::before{width:6px;height:6px}
   .painel-main .p-caret{width:8px;height:17px;vertical-align:-3px}
   .painel-status{padding:9px 12px;gap:12px;font-size:10px;flex-wrap:wrap}
+}
+
+/* movimento reduzido para a cena — precisa vir depois do bloco acima */
+@media (prefers-reduced-motion:reduce){
+  .painel-main .p-caret{animation:none;opacity:1}
 }
