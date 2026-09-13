@@ -140,105 +140,85 @@ Sem pessoas, sem rostos, sem mãos.
 **Arquivos:** `bonus-1.jpg` a `bonus-5.jpg` — 3:4, exporte em 900 × 1200
 **Onde:** Dobra 08, topo de cada card
 
-**Gere sem nenhum texto na capa.** O nome do bônus já aparece em texto logo abaixo da
-imagem, dentro do card. Texto na arte só cria chance de erro de ortografia — e aqui o
-gerador erraria cinco vezes seguidas.
+Direção: **objeto holográfico flutuando, malha neural ao fundo, mão robótica interagindo.**
+É a mesma linguagem visual da foto de produto do hero — malha de pontos conectados em
+turquesa —, o que faz o conjunto inteiro parecer uma peça só.
 
-**Faça as cinco na mesma sessão, em sequência.** Gere a primeira até ficar boa. Depois,
-para as outras quatro, mande a primeira como anexo e peça: *"mesma capa, mesma
-iluminação, mesmo ângulo — troque apenas o objeto central por [novo objeto] e a cor da
-borda para [nova cor]."* É o que mantém as cinco parecendo um conjunto em vez de cinco
-imagens avulsas.
+**Sem nenhum texto na arte.** O nome do bônus já aparece no card, logo abaixo da imagem.
+
+**Gere as cinco em sequência, na mesma sessão.** Aprove a primeira, depois anexe ela e
+peça: *"mesma capa, mesma iluminação, mesmo ângulo, mesma mão robótica — troque só o
+objeto holográfico por X e a cor para Y."* É isso que faz as cinco parecerem um conjunto.
 
 ---
 
-### bonus-1.jpg — Prompt Advogado Consultor Master
+### bonus-1.jpg — Prompt Advogado Consultor Master · turquesa
 
 ```
-Renderização 3D fotorrealista, proporção 3:4 (vertical), de uma capa de material
-digital flutuando levemente inclinada sobre fundo azul-petróleo quase preto (#070B14).
+Renderização 3D fotorrealista, proporção 3:4 vertical, qualidade de still de produto.
 
-A capa é um cartão vertical de superfície escura fosca, cantos levemente arredondados,
-com uma fina borda luminosa em turquesa elétrico (#27E5D4) e um brilho suave da mesma
-cor por trás dela.
+Fundo: azul-petróleo muito escuro (#070B14), com uma malha neural em turquesa elétrico
+(#27E5D4) ao fundo — pontos luminosos conectados por linhas finas, desfocada, como se
+estivesse a metros de distância. Partículas de luz suspensas no ar, em bokeh.
 
-No centro da capa, em relevo discreto e da mesma cor turquesa: duas bolhas de conversa
-sobrepostas, desenhadas em linha fina, sem nada escrito dentro.
+No centro, flutuando e levemente inclinado: duas bolhas de conversa sobrepostas, feitas
+de vidro holográfico turquesa translúcido, com arestas de luz, refração e um brilho
+volumétrico ao redor. Elas pairam sobre uma superfície escura reflexiva, com reflexo
+suave embaixo.
 
-Luz de estúdio suave vinda de cima à esquerda. Sombra de contato abaixo da capa.
-Foco nítido, leve profundidade de campo.
+Vindo da borda inferior direita, uma mão robótica prateada e articulada — dedos de metal
+escovado com juntas visíveis e finas linhas de luz turquesa nas articulações — com o
+indicador estendido tocando de leve a bolha da frente, no ponto de contato um pequeno
+estouro de luz.
 
-Sem nenhum texto, número, letra, logotipo, marca ou símbolo de empresa na imagem.
-Sem pessoas. Sem martelo de juiz, balança da justiça, coluna grega, robô ou cérebro.
+Luz de estúdio suave vinda de cima à esquerda, mais o brilho turquesa do próprio
+holograma. Profundidade de campo cinematográfica: a mão e o objeto nítidos, o fundo
+desfocado.
+
+Proibido na imagem: qualquer texto, número ou letra; qualquer logotipo, marca ou nome de
+empresa; rostos humanos; robô inteiro ou cabeça de robô — apenas a mão; martelo de juiz,
+balança da justiça, coluna grega e cérebro luminoso.
 ```
 
-### bonus-2.jpg — Mestre de Prazos
+---
+
+### As outras quatro
+
+Anexe a `bonus-1.jpg` aprovada e mande o bloco abaixo, trocando as duas linhas finais.
 
 ```
-[mesmo bloco acima, trocando o parágrafo do objeto por:]
+Mesma capa da imagem anexada: mesmo fundo de malha neural, mesma iluminação, mesmo
+ângulo, mesma mão robótica tocando o objeto, mesma profundidade de campo.
 
-No centro da capa, em relevo discreto e da mesma cor turquesa: um calendário de mesa
-visto de frente, desenhado em linha fina, com um único dia destacado por um contorno
-mais forte. Sem números legíveis, sem nomes de mês.
+Troque apenas o objeto holográfico central por: OBJETO
+E a cor do holograma, do brilho e da malha neural para: COR
+
+Nada de texto, número, letra, logotipo ou marca em lugar nenhum.
 ```
 
-Borda e brilho: **turquesa #27E5D4**.
+| Arquivo | OBJETO | COR |
+|---|---|---|
+| `bonus-2.jpg` | um calendário de mesa holográfico, com um único dia marcado por um anel de luz mais forte — sem números legíveis | turquesa `#27E5D4` |
+| `bonus-3.jpg` | um selo circular holográfico com uma fita, **completamente liso por dentro: sem brasão, sem escudo, sem sigla, sem inscrição** | dourado `#F5C451` |
+| `bonus-4.jpg` | um cadeado fechado holográfico sobre uma folha de documento, com três tarjas sólidas cobrindo onde estaria o texto, e filetes de luz correndo como fluxo de dados | dourado `#F5C451` |
+| `bonus-5.jpg` | três painéis retangulares holográficos flutuando lado a lado, levemente sobrepostos e vazios — **sem ícone, sem logotipo e sem símbolo de nenhum aplicativo** | dourado `#F5C451` |
 
-### bonus-3.jpg — Guia de Conformidade OAB
-
-```
-[mesmo bloco, trocando o parágrafo do objeto por:]
-
-No centro da capa, em relevo discreto e da cor da borda: um selo circular liso com uma
-fita presa embaixo, desenhado em linha fina. O selo é completamente liso por dentro —
-sem brasão, sem emblema, sem escudo, sem sigla e sem nenhuma inscrição.
-```
-
-Borda e brilho: **dourado #F5C451**.
-
-> Atenção neste: o emblema da OAB é marca registrada e não pode ser reproduzido nem
-> imitado. Se o gerador colocar qualquer brasão, escudo ou letra dentro do selo,
-> descarte e gere de novo.
-
-### bonus-4.jpg — Protocolo de Sigilo e LGPD
-
-```
-[mesmo bloco, trocando o parágrafo do objeto por:]
-
-No centro da capa, em relevo discreto e da cor da borda: um cadeado fechado apoiado
-sobre uma folha de documento, desenhados em linha fina. Na folha, três tarjas sólidas
-cobrindo onde estaria o texto, como numa anonimização. Sem nenhuma palavra visível.
-```
-
-Borda e brilho: **dourado #F5C451**.
-
-### bonus-5.jpg — Guia de outras ferramentas
-
-```
-[mesmo bloco, trocando o parágrafo do objeto por:]
-
-No centro da capa, em relevo discreto e da cor da borda: três cartões retangulares
-iguais e neutros, lado a lado e levemente sobrepostos, desenhados em linha fina. Os
-cartões são vazios por dentro — sem ícone, sem logotipo, sem letra e sem símbolo de
-nenhum aplicativo ou empresa.
-```
-
-Borda e brilho: **dourado #F5C451**.
+> No bônus 3, confira antes de aprovar: o emblema da OAB é marca registrada e não pode
+> ser reproduzido nem imitado. Qualquer brasão, escudo ou letra dentro do selo — descarte.
 
 ---
 
 ### Quando as cinco estiverem prontas
 
-Salve como `bonus-1.jpg` … `bonus-5.jpg` na raiz do projeto, em 900 × 1200, até 180 KB
-cada. Depois, no topo do `app.js`:
+Salve como `bonus-1.jpg` … `bonus-5.jpg` na raiz do projeto, 900 × 1200, até 180 KB cada.
+Depois, no topo do `app.js`:
 
 ```js
 const BONUS_FOTOS = true;
 ```
 
-As cinco capas entram no lugar dos placeholders, com `alt` descritivo já escrito para
-cada uma. Se algum arquivo faltar, aquele card específico mantém o placeholder — os
-outros quatro aparecem normalmente.
+As cinco entram no lugar dos placeholders, com `alt` descritivo já escrito. Se algum
+arquivo faltar, só aquele card mantém o placeholder.
 
 ## 4 · Depoimentos
 
