@@ -1,0 +1,1523 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JuriPrático IA — Pare de começar do zero cada petição, contrato e parecer</title>
+<meta name="description" content="50 skills prontas para instalar na IA que você já usa, organizadas nos 5 departamentos do escritório. Você entrega o caso, recebe a primeira versão estruturada para revisar e assinar.">
+<meta name="theme-color" content="#17324D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%2317324D'/%3E%3Cg%20fill='%23fff'%3E%3Cpath%20d='M12%2010h24v10H22v22h14v10H12z'/%3E%3Cpath%20d='M42%2010h10v42H28V42h14z'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:title" content="JuriPrático IA — IA prática para advogados">
+<meta property="og:description" content="Você entrega o caso, recebe a primeira versão estruturada para revisar e assinar. Pagamento único, acesso vitalício, 30 dias de garantia.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600..800&family=Manrope:wght@400..800&family=Source+Serif+4:opsz,wght@8..60,400..600&display=swap">
+
+<!--
+  ============================================================================
+  JuriPrático IA — Landing page (single-file)
+  Design system JuriPrático IA 1.0.0 · tokens --jp-* preservados
+  ----------------------------------------------------------------------------
+  SLOTS DE IMAGEM REAL (procure por data-shot no HTML)
+  Cada moldura abaixo é desenhada em CSS e funciona como fallback.
+  Para publicar com print real, insira dentro do .shot:
+      <img class="shot__img" src="assets/SEU-PRINT.png" alt="descricao real">
+  e a moldura desenhada fica coberta. Nao usar tela ficticia que mostre
+  resultado que o produto ainda nao entrega.
+      data-shot="hero"      Claude com a skill Contestacao aberta
+      data-shot="passo-1"   Departamentos
+      data-shot="passo-2"   Lista de skills
+      data-shot="passo-3"   Briefing guiado
+      data-shot="passo-4"   Saida estruturada com marcacao [CONFERIR]
+      data-shot="conferir"  Recorte ampliado da marcacao [CONFERIR]
+  ----------------------------------------------------------------------------
+  EDITORIAL: os exemplos de skills no acordeao (secao 05) sao ilustrativos.
+  Substituir pela lista real antes de publicar.
+  ============================================================================
+-->
+
+<style>
+/* ===========================================================================
+   1 · TOKENS
+   =========================================================================== */
+:root{
+  color-scheme: light;
+
+  /* Paleta JuriPratico IA 1.0.0 */
+  --jp-navy-950:#102438; --jp-navy-900:#17324D; --jp-navy-800:#244760;
+  --jp-teal-800:#065661; --jp-teal-700:#066874; --jp-teal-600:#087F8C;
+  --jp-teal-300:#80D5DC; --jp-teal-50:#EAF6F7;
+  --jp-neutral-0:#FFFFFF; --jp-neutral-50:#F7F8FA; --jp-neutral-100:#EDF0F3;
+  --jp-neutral-200:#DCE2E7; --jp-neutral-400:#7A8997; --jp-neutral-600:#526271;
+  --jp-neutral-900:#202832;
+  --jp-amber-800:#805000; --jp-amber-50:#FFF4D8;
+  --jp-blue-800:#245C91; --jp-green-800:#17613C;
+
+  /* Semanticos */
+  --jp-canvas:var(--jp-neutral-50);
+  --jp-surface:var(--jp-neutral-0);
+  --jp-surface-subtle:var(--jp-neutral-100);
+  --jp-text:var(--jp-neutral-900);
+  --jp-text-muted:var(--jp-neutral-600);
+  --jp-heading:var(--jp-navy-900);
+  --jp-border:var(--jp-neutral-200);
+  --jp-border-control:var(--jp-neutral-400);
+  --jp-action:var(--jp-teal-700);
+  --jp-action-hover:var(--jp-teal-800);
+  --jp-on-action:var(--jp-neutral-0);
+  --jp-accent-soft:var(--jp-teal-50);
+  --jp-focus:var(--jp-teal-700);
+
+  /* Extensao de pagina: dourado dos bonus (AD 2) e acentos por area (AD 4).
+     Escopo desta landing page; nao promove a tokens do design system. */
+  --lp-gold:#E8C55A; --lp-gold-deep:#C9A227; --lp-gold-ink:#2A2008;
+  --lp-area-trabalhista:#066874;
+  --lp-area-previdenciario:#245C91;
+  --lp-area-familia:#7A3B6B;
+  --lp-area-civel:#805000;
+
+  /* Sobre fundo escuro */
+  --lp-on-dark:#EEF3F7;
+  --lp-on-dark-muted:#B2C2CF;
+  --lp-on-dark-border:#35506B;
+  --lp-on-dark-accent:var(--jp-teal-300);
+
+  /* Espaco, raio, sombra, movimento */
+  --jp-radius-sm:4px; --jp-radius-md:8px; --jp-radius-lg:12px; --jp-radius-pill:999px;
+  --jp-container:1200px;
+  --jp-shadow-sm:0 2px 6px #1024380A;
+  --jp-shadow-md:0 12px 32px #10243814;
+  --jp-shadow-lg:0 24px 64px #10243829;
+  --jp-duration-fast:120ms; --jp-duration-normal:180ms; --jp-duration-slow:280ms;
+  --jp-ease:cubic-bezier(.2,0,0,1);
+
+  /* Tipografia */
+  --jp-font-display:'Archivo','Manrope',Arial,sans-serif;
+  --jp-font-ui:'Manrope',Arial,sans-serif;
+  --jp-font-body:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --jp-font-document:Georgia,'Times New Roman',serif;
+
+  --lp-gutter:clamp(16px,4vw,40px);
+  --lp-section:clamp(48px,7vw,96px);
+}
+
+/* ===========================================================================
+   2 · BASE
+   =========================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html:focus-within{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--jp-canvas);
+  color:var(--jp-text);
+  font-family:var(--jp-font-body);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+svg{display:block}
+h1,h2,h3,h4{
+  font-family:var(--jp-font-display);
+  font-weight:800;
+  letter-spacing:-.028em;
+  line-height:1.08;
+  color:var(--jp-heading);
+  margin:0 0 .5em;
+  text-wrap:balance;
+}
+h1{font-size:clamp(2.15rem,5.2vw,4rem)}
+h2{font-size:clamp(1.85rem,4vw,3rem)}
+h3{font-size:clamp(1.2rem,2.2vw,1.6rem);letter-spacing:-.02em}
+h4{font-size:1.0625rem;letter-spacing:-.01em;font-weight:700}
+p{margin:0 0 1em;max-width:70ch}
+strong{font-weight:600;color:var(--jp-heading)}
+a{color:var(--jp-action);text-underline-offset:3px}
+ul,ol{margin:0;padding:0;list-style:none}
+:where(a,button,summary,[tabindex]):focus-visible{
+  outline:3px solid var(--jp-focus);
+  outline-offset:3px;
+  border-radius:var(--jp-radius-sm);
+}
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.skip{
+  position:absolute;left:var(--lp-gutter);top:-100px;z-index:60;
+  background:var(--jp-surface);color:var(--jp-heading);
+  padding:12px 20px;border-radius:var(--jp-radius-md);
+  font-family:var(--jp-font-ui);font-weight:700;box-shadow:var(--jp-shadow-md);
+  transition:top var(--jp-duration-normal) var(--jp-ease);
+}
+.skip:focus{top:12px}
+
+/* ===========================================================================
+   3 · LAYOUT E RITMO DE SECOES (AD 3)
+   =========================================================================== */
+.wrap{width:100%;max-width:var(--jp-container);margin-inline:auto;padding-inline:var(--lp-gutter)}
+.wrap--narrow{max-width:900px}
+[id]{scroll-margin-top:92px}
+.s{padding-block:var(--lp-section);background:var(--jp-canvas)}
+.s--surface{background:var(--jp-surface)}
+.s--dark{background:var(--jp-navy-900);color:var(--lp-on-dark)}
+.s--darker{background:var(--jp-navy-950);color:var(--lp-on-dark)}
+.s--dark h2,.s--dark h3,.s--dark h4,
+.s--darker h2,.s--darker h3,.s--darker h4{color:#fff}
+.s--dark strong,.s--darker strong{color:#fff}
+.s--dark a:not(.btn),.s--darker a:not(.btn){color:var(--lp-on-dark-accent)}
+.s--dark .lede,.s--darker .lede{color:var(--lp-on-dark-muted)}
+.s-head{margin-bottom:clamp(28px,4vw,48px)}
+.s-head p{color:var(--jp-text-muted)}
+.s--dark .s-head p,.s--darker .s-head p{color:var(--lp-on-dark-muted)}
+.lede{font-size:clamp(1.0625rem,1.6vw,1.3125rem);color:var(--jp-text-muted);line-height:1.6}
+
+/* ===========================================================================
+   4 · COMPONENTES UI (botao, badge, contadores)
+   =========================================================================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:14px 28px;
+  font-family:var(--jp-font-ui);font-size:1.0625rem;font-weight:700;
+  letter-spacing:-.01em;text-decoration:none;text-align:center;
+  border:2px solid transparent;border-radius:var(--jp-radius-md);
+  background:var(--jp-action);color:var(--jp-on-action);cursor:pointer;
+  transition:background var(--jp-duration-fast) var(--jp-ease),
+             transform var(--jp-duration-fast) var(--jp-ease);
+}
+.btn:hover{background:var(--jp-action-hover)}
+.btn:active{transform:translateY(1px)}
+.btn .arw{transition:transform var(--jp-duration-normal) var(--jp-ease)}
+.btn:hover .arw{transform:translateX(4px)}
+.btn--ghost{background:transparent;color:var(--jp-action);border-color:var(--jp-border-control)}
+.btn--ghost:hover{background:var(--jp-accent-soft);border-color:var(--jp-action)}
+.btn--onDark{background:var(--jp-teal-300);color:var(--jp-navy-950)}
+.btn--onDark:hover{background:#A0E3E8}
+.btn--sm{min-height:44px;padding:10px 20px;font-size:1rem}
+.btn--wide{width:100%}
+
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--jp-font-ui);font-size:.75rem;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 12px;border-radius:var(--jp-radius-pill);
+  background:var(--jp-accent-soft);color:var(--jp-teal-800);
+  border:1px solid #C8E6EA;
+}
+.pill--gold{background:rgba(232,197,90,.14);color:var(--lp-gold);border-color:rgba(232,197,90,.45)}
+.pill--rec{background:var(--jp-teal-300);color:var(--jp-navy-950);border-color:var(--jp-teal-300)}
+.pill--num{background:var(--jp-navy-900);color:#fff;border-color:var(--jp-navy-900)}
+.pill--plain{background:#fff;color:var(--jp-navy-900);border-color:var(--jp-border)}
+
+.eyebrow{
+  font-family:var(--jp-font-ui);font-size:.8125rem;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--jp-teal-700);margin:0 0 14px;
+}
+.s--dark .eyebrow,.s--darker .eyebrow{color:var(--lp-on-dark-accent)}
+
+/* Faixa de contadores (AD 4) */
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.4vw,16px)}
+.counter{
+  background:var(--jp-surface);border:1px solid var(--jp-border);
+  border-radius:var(--jp-radius-lg);padding:clamp(14px,2vw,24px);
+  text-align:center;box-shadow:var(--jp-shadow-sm);
+}
+.counter b{
+  display:block;font-family:var(--jp-font-display);font-weight:800;
+  font-size:clamp(1.6rem,4.2vw,2.75rem);line-height:1;letter-spacing:-.04em;
+  color:var(--jp-teal-700);
+}
+.counter span{
+  display:block;margin-top:8px;font-family:var(--jp-font-ui);
+  font-size:clamp(.75rem,1.5vw,.875rem);font-weight:600;line-height:1.3;
+  color:var(--jp-text-muted);
+}
+.s--dark .counter,.s--darker .counter{
+  background:var(--jp-navy-800);border-color:var(--lp-on-dark-border);box-shadow:none;
+}
+.s--dark .counter b,.s--darker .counter b{color:var(--jp-teal-300)}
+.s--dark .counter span,.s--darker .counter span{color:var(--lp-on-dark-muted)}
+@media (max-width:560px){.counters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ===========================================================================
+   5 · HEADER
+   =========================================================================== */
+.hdr{
+  position:sticky;top:0;z-index:20;
+  background:rgba(247,248,250,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--jp-border);
+}
+.hdr__in{display:flex;align-items:center;gap:clamp(16px,3vw,40px);min-height:72px}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;flex:0 0 auto}
+.logo svg{width:28px;height:28px;color:var(--jp-navy-900)}
+.logo b{
+  font-family:var(--jp-font-display);font-weight:800;font-size:1.125rem;
+  letter-spacing:-.03em;color:var(--jp-navy-900);white-space:nowrap;
+}
+.logo b i{font-style:normal;color:var(--jp-teal-700)}
+.hdr nav{display:flex;gap:clamp(12px,2vw,28px);margin-left:auto}
+.hdr nav a{
+  font-family:var(--jp-font-ui);font-size:.9375rem;font-weight:600;
+  color:var(--jp-text-muted);text-decoration:none;
+  display:inline-flex;align-items:center;min-height:44px;padding:0 2px;
+  border-bottom:2px solid transparent;
+}
+.hdr nav a:hover{color:var(--jp-heading);border-bottom-color:var(--jp-action)}
+.hdr .btn{margin-left:clamp(12px,2vw,24px)}
+@media (max-width:960px){.hdr nav{display:none}.hdr .btn{margin-left:auto}}
+@media (max-width:400px){.hdr .btn{padding:10px 16px;font-size:.9375rem}}
+
+/* ===========================================================================
+   6 · HERO
+   =========================================================================== */
+.hero{padding-block:clamp(40px,6vw,84px) clamp(32px,4vw,56px);background:var(--jp-canvas)}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,4vw,56px);align-items:center}
+.hero__grid>*{min-width:0}
+.hero h1{margin-bottom:24px}
+.hero .lede{max-width:54ch}
+.hero__meta{
+  display:flex;flex-wrap:wrap;align-items:center;row-gap:2px;
+  font-family:var(--jp-font-ui);font-size:.9375rem;font-weight:600;
+  color:var(--jp-text-muted);margin:22px 0 26px;
+}
+.hero__meta span{white-space:nowrap}
+.hero__meta i{font-style:normal;color:var(--jp-border-control);padding:0 10px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.compat{
+  margin-top:30px;padding-top:22px;border-top:1px solid var(--jp-border);
+  font-family:var(--jp-font-ui);font-size:.8125rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--jp-text-muted);
+}
+.compat span{color:var(--jp-navy-800)}
+@media (max-width:900px){.hero__grid{grid-template-columns:minmax(0,1fr)}.hero__art{order:-1}}
+
+/* ===========================================================================
+   7 · AD 1 · COMPOSICAO-PRODUTO
+   =========================================================================== */
+.scene{position:relative;filter:drop-shadow(0 28px 60px rgba(16,36,56,.16))}
+.scene svg{width:100%;max-width:100%;height:auto}
+
+/* ===========================================================================
+   8 · MOLDURAS DE PRINT (.shot) — fallback desenhado + slot de imagem real
+   =========================================================================== */
+.shot{
+  position:relative;background:var(--jp-navy-950);
+  border:1px solid var(--jp-border);border-radius:var(--jp-radius-lg);
+  overflow:hidden;box-shadow:var(--jp-shadow-md);
+}
+.shot__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.shot__bar{
+  display:flex;align-items:center;gap:6px;
+  padding:10px 14px;background:#1C3245;border-bottom:1px solid #2B455C;
+}
+.shot__bar i{width:9px;height:9px;border-radius:50%;background:#3D5970;display:block}
+.shot__bar b{
+  margin-left:8px;font-family:var(--jp-font-ui);font-size:.75rem;font-weight:700;
+  color:#9FB4C6;letter-spacing:.02em;
+}
+.shot__body{padding:clamp(14px,2vw,20px);background:#12283C;min-height:180px}
+.shot__title{
+  font-family:var(--jp-font-ui);font-size:.9375rem;font-weight:800;
+  color:#fff;margin:0 0 4px;letter-spacing:-.01em;
+}
+.shot__sub{font-family:var(--jp-font-ui);font-size:.75rem;color:#9FB4C6;margin:0 0 14px}
+.shot__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.shot__tile{
+  background:#1A3348;border:1px solid #2B455C;border-radius:var(--jp-radius-md);
+  padding:10px 12px;font-family:var(--jp-font-ui);font-size:.75rem;
+  font-weight:700;color:#DCE7EF;
+}
+.shot__tile em{display:block;font-style:normal;font-weight:400;color:#8FA6B9;font-size:.6875rem;margin-top:2px}
+.shot__row{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:9px 12px;margin-bottom:6px;
+  background:#1A3348;border:1px solid #2B455C;border-radius:var(--jp-radius-md);
+  font-family:var(--jp-font-ui);font-size:.75rem;font-weight:600;color:#DCE7EF;
+}
+.shot__row span{color:#A8BCCC;font-weight:400}
+.shot__field{margin-bottom:10px}
+.shot__field label{
+  display:block;font-family:var(--jp-font-ui);font-size:.6875rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:#8FA6B9;margin-bottom:4px;
+}
+.shot__field div{
+  background:#0E2033;border:1px solid #2B455C;border-radius:var(--jp-radius-sm);
+  padding:8px 10px;font-family:var(--jp-font-ui);font-size:.75rem;color:#C6D6E2;
+}
+.shot__doc{
+  background:#fff;border-radius:var(--jp-radius-md);padding:14px 16px;
+  font-family:var(--jp-font-document);font-size:.75rem;line-height:1.6;color:#3A4754;
+}
+.shot__doc h5{
+  font-family:var(--jp-font-ui);font-size:.6875rem;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--jp-navy-900);
+  margin:0 0 6px;
+}
+.shot__doc h5+p{margin-top:0}
+.shot__doc p{margin:0 0 10px}
+.bar{display:block;height:6px;border-radius:3px;background:#E2E8ED;margin:5px 0}
+.bar--s{width:62%}.bar--m{width:84%}.bar--l{width:96%}
+.mark{
+  background:var(--jp-amber-50);border-bottom:2px solid #E0B860;
+  color:var(--jp-amber-800);font-family:var(--jp-font-ui);font-size:.6875rem;
+  font-weight:700;padding:1px 5px;border-radius:3px;white-space:nowrap;
+}
+
+/* ===========================================================================
+   9 · ANTES / DEPOIS
+   =========================================================================== */
+.ba{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(14px,2.4vw,28px)}
+.ba__col{border-radius:var(--jp-radius-lg);padding:clamp(20px,2.6vw,32px);display:flex;flex-direction:column}
+.ba__col--before{background:var(--jp-surface-subtle);border:1px solid var(--jp-border);color:var(--jp-text-muted)}
+.ba__col--after{background:var(--jp-navy-900);border:1px solid var(--jp-navy-900);color:var(--lp-on-dark)}
+.ba__stamp{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  font-family:var(--jp-font-ui);font-size:.875rem;font-weight:800;
+  letter-spacing:.1em;padding:7px 14px;border-radius:var(--jp-radius-pill);
+  margin-bottom:18px;
+}
+.ba__col--before .ba__stamp{background:#fff;color:var(--jp-neutral-600);border:1px dashed var(--jp-border-control)}
+.ba__col--after .ba__stamp{background:var(--jp-teal-300);color:var(--jp-navy-950)}
+.ba__col h3{margin-bottom:10px}
+.ba__col--before h3{color:var(--jp-neutral-600)}
+.ba__col--after h3{color:#fff}
+.ba__col p{margin-bottom:18px}
+.ba__col--after p{color:var(--lp-on-dark-muted)}
+.ba__col--after strong{color:#fff}
+.ba__paper{
+  margin-top:auto;background:#fff;border-radius:var(--jp-radius-md);
+  padding:16px;min-height:132px;border:1px solid var(--jp-border);
+}
+.ba__paper--blank{display:flex;align-items:center;justify-content:center}
+.ba__paper--blank em{
+  font-family:var(--jp-font-ui);font-style:normal;font-size:.8125rem;
+  font-weight:600;color:var(--jp-text-muted);
+}
+.ba__paper h6{
+  font-family:var(--jp-font-ui);font-size:.6875rem;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--jp-navy-900);
+  margin:0 0 6px;
+}
+.ba__paper h6+.bar{margin-top:0}
+.ba__paper .grp{margin-bottom:12px}
+.ba__paper .grp:last-child{margin-bottom:0}
+@media (max-width:760px){.ba{grid-template-columns:minmax(0,1fr)}}
+
+/* ===========================================================================
+   10 · AREAS (cards com acento proprio + deep link ?a=)
+   =========================================================================== */
+.areas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.area{
+  --a:var(--jp-teal-700);
+  position:relative;background:var(--jp-surface);
+  border:1px solid var(--jp-border);border-top:4px solid var(--a);
+  border-radius:var(--jp-radius-lg);padding:clamp(20px,2.4vw,30px);
+  box-shadow:var(--jp-shadow-sm);
+  transition:box-shadow var(--jp-duration-normal) var(--jp-ease),
+             transform var(--jp-duration-normal) var(--jp-ease);
+}
+.area:hover{box-shadow:var(--jp-shadow-md);transform:translateY(-2px)}
+.area[data-area="trabalhista"]{--a:var(--lp-area-trabalhista)}
+.area[data-area="previdenciario"]{--a:var(--lp-area-previdenciario)}
+.area[data-area="familia"]{--a:var(--lp-area-familia)}
+.area[data-area="civel"]{--a:var(--lp-area-civel)}
+.area__ico{
+  width:48px;height:48px;border-radius:var(--jp-radius-md);
+  display:grid;place-items:center;margin-bottom:16px;
+  background:var(--jp-surface-subtle);
+  background:color-mix(in srgb,var(--a) 10%,#fff);
+  color:var(--a);
+}
+.area__ico svg{width:26px;height:26px}
+.area h3{color:var(--a);margin-bottom:8px}
+.area p{color:var(--jp-text-muted);margin:0 0 12px;font-size:1rem}
+.area__tag{
+  font-family:var(--jp-font-ui);font-size:.8125rem;font-weight:700;
+  color:var(--a);margin:0;
+}
+.area[data-featured]{
+  order:-1;border-width:1px 2px 2px;border-color:var(--a);border-top-width:4px;
+  box-shadow:var(--jp-shadow-md);
+  box-shadow:0 16px 40px color-mix(in srgb,var(--a) 18%,transparent);
+}
+.area__here{
+  display:none;position:absolute;top:-13px;right:20px;
+  font-family:var(--jp-font-ui);font-size:.6875rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+  background:var(--a);color:#fff;padding:5px 12px;border-radius:var(--jp-radius-pill);
+}
+.area[data-featured] .area__here{display:block}
+@media (max-width:700px){.areas{grid-template-columns:minmax(0,1fr)}}
+
+/* ===========================================================================
+   11 · COMO FUNCIONA (4 prints numerados)
+   =========================================================================== */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,22px)}
+.step{display:flex;flex-direction:column}
+.step__n{
+  display:flex;align-items:center;gap:10px;margin-bottom:14px;
+  font-family:var(--jp-font-ui);font-size:.9375rem;font-weight:700;color:var(--jp-heading);
+}
+.step__n b{
+  flex:0 0 auto;width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;background:var(--jp-navy-900);color:#fff;
+  font-family:var(--jp-font-display);font-size:1rem;font-weight:800;
+}
+.step>p{font-size:.9375rem;color:var(--jp-text-muted);margin:14px 0 0}
+.step .shot{flex:1;display:flex;flex-direction:column}
+.step .shot__body{flex:1;display:flex;flex-direction:column}
+.step .shot__doc{flex:1}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:540px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* ===========================================================================
+   12 · DEPARTAMENTOS (acordeao)
+   =========================================================================== */
+.dept{
+  background:var(--jp-surface);border:1px solid var(--jp-border);
+  border-radius:var(--jp-radius-lg);margin-bottom:12px;overflow:hidden;
+  box-shadow:var(--jp-shadow-sm);
+}
+.dept>summary{
+  display:flex;align-items:center;gap:16px;
+  padding:clamp(16px,2vw,22px) clamp(16px,2vw,26px);
+  min-height:44px;cursor:pointer;list-style:none;
+}
+.dept>summary::-webkit-details-marker{display:none}
+.dept__name{
+  font-family:var(--jp-font-display);font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(1.0625rem,2vw,1.375rem);color:var(--jp-heading);flex:1 1 auto;
+}
+.dept__count{
+  font-family:var(--jp-font-ui);font-size:.875rem;font-weight:800;
+  color:var(--jp-teal-700);background:var(--jp-accent-soft);
+  border-radius:var(--jp-radius-pill);padding:5px 13px;white-space:nowrap;
+}
+.dept__chev{flex:0 0 auto;width:22px;height:22px;color:var(--jp-border-control);transition:transform var(--jp-duration-normal) var(--jp-ease)}
+.dept[open] .dept__chev{transform:rotate(180deg)}
+.dept[open]>summary{border-bottom:1px solid var(--jp-border)}
+.dept__body{padding:clamp(16px,2vw,22px) clamp(16px,2vw,26px)}
+.dept__body>p{font-family:var(--jp-font-ui);font-size:.8125rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--jp-text-muted);margin:0 0 12px}
+.dept__list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:8px 20px}
+.dept__list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:1rem;color:var(--jp-text);padding:3px 0;
+}
+.dept__list li svg{flex:0 0 auto;width:18px;height:18px;margin-top:5px;color:var(--jp-teal-600)}
+
+/* ===========================================================================
+   13 · CONFIANCA (escura)
+   =========================================================================== */
+.trust{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(28px,4vw,56px);align-items:center}
+.trust>*{min-width:0}
+.trust p{color:var(--lp-on-dark-muted);font-size:1.0625rem}
+.trust .note{
+  margin-top:24px;padding:16px 20px;border-left:3px solid var(--jp-teal-300);
+  background:rgba(128,213,220,.08);border-radius:0 var(--jp-radius-md) var(--jp-radius-md) 0;
+}
+.trust .note p{margin:0;color:var(--lp-on-dark)}
+.docshot{
+  background:#fff;border-radius:var(--jp-radius-lg);
+  padding:clamp(22px,3vw,34px);box-shadow:var(--jp-shadow-lg);
+  font-family:var(--jp-font-document);color:#2E3A46;font-size:1rem;line-height:1.8;
+}
+.docshot__hd{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding-bottom:12px;margin-bottom:18px;border-bottom:1px solid var(--jp-border);
+  font-family:var(--jp-font-ui);font-size:.75rem;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--jp-text-muted);
+}
+.docshot h4{font-family:var(--jp-font-document);font-size:1rem;font-weight:700;color:var(--jp-navy-900);margin:0 0 6px;letter-spacing:0}
+.docshot p{margin:0 0 14px;color:#3A4754;max-width:none}
+.mark--big{
+  display:inline-block;font-size:.8125rem;padding:3px 9px;
+  background:var(--jp-amber-50);border:1px solid #E0B860;border-bottom-width:2px;
+  color:var(--jp-amber-800);border-radius:var(--jp-radius-sm);
+  font-family:var(--jp-font-ui);font-weight:700;
+}
+@media (max-width:900px){.trust{grid-template-columns:minmax(0,1fr)}}
+
+/* ===========================================================================
+   14 · AD 2 · BONUS COMO OBJETO FISICO
+   =========================================================================== */
+.bonus{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px) clamp(24px,4vw,64px)}
+.bonus__item{display:flex;align-items:center;gap:clamp(18px,2.6vw,30px)}
+.bonus__item:nth-child(5){grid-column:1/-1;justify-content:center}
+.bonus__item:nth-child(5) .bonus__txt{max-width:36ch}
+.cover{
+  position:relative;flex:0 0 auto;width:clamp(126px,17vw,166px);aspect-ratio:3/4;
+  border-radius:3px 8px 8px 3px;
+  background:linear-gradient(115deg,#0B1722 0%,#182B3D 42%,#101E2C 100%);
+  box-shadow:0 26px 44px rgba(0,0,0,.45),0 3px 0 #060E16,inset 0 0 0 1px rgba(232,197,90,.22);
+  transform:perspective(1100px) rotateY(-13deg) rotateX(2deg);
+  transform-origin:left center;
+  transition:transform var(--jp-duration-slow) var(--jp-ease);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:18px 16px 16px 22px;overflow:hidden;
+}
+.bonus__item:hover .cover{transform:perspective(1100px) rotateY(-7deg) rotateX(1deg) translateY(-6px)}
+.cover::before{ /* lombada */
+  content:"";position:absolute;left:0;top:0;bottom:0;width:13px;
+  background:linear-gradient(90deg,#040A10,rgba(4,10,16,0) 78%);
+  border-right:1px solid rgba(232,197,90,.18);
+}
+.cover::after{ /* brilho */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(128deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 34%);
+}
+.cover__rule{height:1px;background:rgba(232,197,90,.38);margin:10px 0 0}
+.cover__kicker{
+  font-family:var(--jp-font-ui);font-size:.625rem;font-weight:800;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--lp-gold);
+}
+.cover__mid{display:block}
+.cover__title{
+  display:block;font-family:var(--jp-font-display);font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(1rem,1.5vw,1.1875rem);line-height:1.12;color:#fff;
+  text-align:left;margin:0;
+}
+.cover__foot{
+  font-family:var(--jp-font-ui);font-size:.5625rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(232,197,90,.72);text-align:left;
+}
+.cover__top{text-align:left}
+.cover__pro{
+  position:absolute;top:12px;right:12px;z-index:3;
+  background:linear-gradient(180deg,var(--lp-gold),var(--lp-gold-deep));
+  color:var(--lp-gold-ink);border-radius:var(--jp-radius-pill);
+  font-family:var(--jp-font-ui);font-size:.5625rem;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;
+  box-shadow:0 2px 8px rgba(0,0,0,.35);
+}
+.bonus__name{font-family:var(--jp-font-display);font-size:clamp(1.0625rem,1.7vw,1.25rem);font-weight:800;letter-spacing:-.02em;color:#fff;margin:0 0 8px}
+.bonus__desc{font-size:.9375rem;color:var(--lp-on-dark-muted);margin:0;max-width:36ch}
+@media (max-width:860px){.bonus{grid-template-columns:minmax(0,1fr)}.bonus__item:nth-child(5){grid-column:auto;justify-content:flex-start}}
+@media (max-width:400px){.bonus__item{flex-direction:column;align-items:flex-start}}
+
+/* ===========================================================================
+   15 · PRECOS
+   =========================================================================== */
+.plans{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,2.4vw,28px);align-items:start}
+.plan{
+  position:relative;background:var(--jp-navy-800);
+  border:1px solid var(--lp-on-dark-border);border-radius:var(--jp-radius-lg);
+  padding:clamp(22px,3vw,34px);
+}
+.plan--pro{
+  background:linear-gradient(180deg,#1D3C57,#17324D);
+  border:2px solid var(--jp-teal-300);
+  box-shadow:0 24px 64px rgba(0,0,0,.35);
+}
+.plan__top{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.plan__name{font-family:var(--jp-font-display);font-size:1.5rem;font-weight:800;letter-spacing:-.02em;color:#fff;margin:0}
+.plan__old{
+  font-family:var(--jp-font-ui);font-size:1.125rem;font-weight:600;
+  color:var(--lp-on-dark-muted);text-decoration:line-through;
+  text-decoration-thickness:2px;margin-right:10px;
+}
+.plan__price{
+  font-family:var(--jp-font-display);font-weight:800;letter-spacing:-.045em;
+  font-size:clamp(2.75rem,7vw,4rem);line-height:1;color:#fff;
+}
+.plan__price sup{font-size:.36em;font-weight:700;vertical-align:super;letter-spacing:0;margin-right:2px}
+.plan__save{
+  display:inline-block;margin-top:14px;
+  font-family:var(--jp-font-ui);font-size:.9375rem;font-weight:800;
+  color:var(--jp-navy-950);background:var(--jp-teal-300);
+  padding:6px 14px;border-radius:var(--jp-radius-pill);
+}
+.plan__what{margin:20px 0 24px;color:var(--lp-on-dark-muted);font-size:1rem}
+.plan .btn{width:100%}
+.plan__note{
+  margin:14px 0 0;font-family:var(--jp-font-ui);font-size:.8125rem;
+  color:var(--lp-on-dark-muted);text-align:center;
+}
+@media (max-width:760px){.plans{grid-template-columns:minmax(0,1fr)}.plan--pro{order:-1}}
+
+.cmp-wrap{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:clamp(28px,4vw,48px);border-radius:var(--jp-radius-lg)}
+.cmp{width:100%;min-width:520px;border-collapse:collapse;background:var(--jp-navy-800);font-family:var(--jp-font-ui);font-size:.9375rem}
+.cmp caption{
+  text-align:left;padding:18px 20px;color:#fff;
+  font-family:var(--jp-font-display);font-size:1.125rem;font-weight:800;letter-spacing:-.02em;
+  background:var(--jp-navy-800);border-bottom:1px solid var(--lp-on-dark-border);
+}
+.cmp th,.cmp td{padding:13px 18px;border-bottom:1px solid var(--lp-on-dark-border);text-align:left}
+.cmp thead th{
+  font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--lp-on-dark-muted);background:#1B3B55;
+}
+.cmp thead th:nth-child(2),.cmp thead th:nth-child(3),
+.cmp td:nth-child(2),.cmp td:nth-child(3){text-align:center;width:108px}
+.cmp thead th:nth-child(3){color:var(--jp-teal-300)}
+.cmp tbody th{font-weight:600;color:var(--lp-on-dark)}
+.cmp td{color:var(--lp-on-dark-muted)}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+.cmp-hint{display:none;margin:10px 0 0;font-family:var(--jp-font-ui);font-size:.8125rem;color:var(--lp-on-dark-muted)}
+@media (max-width:720px){.cmp-hint{display:block}}
+.yes{color:var(--jp-teal-300)}
+.no{color:#9DB2C4}
+.cmp .yes svg,.cmp .no svg{width:20px;height:20px;margin-inline:auto}
+
+/* ===========================================================================
+   16 · FLUXO + GARANTIA
+   =========================================================================== */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,24px);counter-reset:f}
+.flow li{
+  background:var(--jp-surface);border:1px solid var(--jp-border);
+  border-radius:var(--jp-radius-lg);padding:clamp(18px,2.2vw,26px);
+  box-shadow:var(--jp-shadow-sm);
+}
+.flow__ico{display:block;width:40px;height:40px;color:var(--jp-teal-600);margin-bottom:14px}
+.flow__ico svg{width:100%;height:100%}
+.flow b{
+  display:block;font-family:var(--jp-font-ui);font-size:.75rem;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--jp-text-muted);margin-bottom:6px;
+}
+.flow span{font-size:1rem;color:var(--jp-text);font-weight:400}
+@media (max-width:860px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.flow{grid-template-columns:minmax(0,1fr)}}
+
+.guar{
+  display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:clamp(20px,3vw,40px);
+  align-items:center;margin-top:clamp(36px,5vw,64px);
+  background:var(--jp-surface);border:1px solid var(--jp-border);
+  border-radius:var(--jp-radius-lg);padding:clamp(24px,3.4vw,44px);
+  box-shadow:var(--jp-shadow-md);
+}
+.seal{
+  flex:0 0 auto;width:clamp(116px,15vw,152px);aspect-ratio:1;border-radius:50%;
+  display:grid;place-items:center;text-align:center;
+  background-color:var(--jp-navy-900);
+  background-image:radial-gradient(circle at 32% 26%,#1F4869,var(--jp-navy-900) 72%);
+  color:#fff;box-shadow:0 0 0 5px #fff,0 0 0 7px var(--jp-teal-600),var(--jp-shadow-md);
+}
+.seal p{margin:0;max-width:none}
+.seal b{display:block;color:#fff;font-family:var(--jp-font-display);font-size:clamp(2.2rem,4.6vw,3rem);font-weight:800;line-height:.9;letter-spacing:-.04em}
+.seal span{display:block;font-family:var(--jp-font-ui);font-size:.625rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--jp-teal-300);margin-top:6px}
+.guar h3{margin-bottom:10px}
+.guar__txt p{margin:0;color:var(--jp-text-muted)}
+@media (max-width:640px){.guar{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}.guar__txt p{text-align:left}}
+
+/* ===========================================================================
+   17 · FAQ + RODAPE
+   =========================================================================== */
+.faq{
+  background:var(--jp-surface);border:1px solid var(--jp-border);
+  border-radius:var(--jp-radius-lg);margin-bottom:10px;overflow:hidden;
+}
+.faq>summary{
+  display:flex;align-items:center;gap:16px;cursor:pointer;list-style:none;
+  padding:18px clamp(16px,2vw,24px);min-height:44px;
+  font-family:var(--jp-font-ui);font-size:1.0625rem;font-weight:700;color:var(--jp-heading);
+}
+.faq>summary::-webkit-details-marker{display:none}
+.faq__q{flex:1 1 auto}
+.faq__chev{flex:0 0 auto;width:22px;height:22px;color:var(--jp-border-control);transition:transform var(--jp-duration-normal) var(--jp-ease)}
+.faq[open] .faq__chev{transform:rotate(180deg)}
+.faq__a{padding:0 clamp(16px,2vw,24px) 20px}
+.faq__a p{margin:0;color:var(--jp-text-muted)}
+
+.ft{background:var(--jp-navy-950);color:var(--lp-on-dark);padding-block:clamp(40px,5vw,64px)}
+.ft__top{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding-bottom:28px;border-bottom:1px solid #22394F}
+.ft .logo svg{color:#fff}
+.ft .logo b{color:#fff}
+.ft .logo b i{color:var(--jp-teal-300)}
+.ft__nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+.ft__nav a{
+  display:inline-flex;align-items:center;min-height:36px;padding:0 2px;
+  font-family:var(--jp-font-ui);font-size:.9375rem;font-weight:600;
+  color:var(--lp-on-dark-muted);text-decoration:none;
+}
+.ft__nav a:hover{color:#fff;text-decoration:underline}
+.disclaimer{
+  margin-top:28px;font-size:.9375rem;line-height:1.7;color:#C3D2DE;max-width:92ch;
+}
+.disclaimer p{max-width:none;margin:0}
+.disclaimer h4{font-family:var(--jp-font-ui);font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--jp-teal-300);margin:0 0 10px}
+.ft__legal{margin-top:26px;font-family:var(--jp-font-ui);font-size:.875rem;color:#93A8B9}
+.ft__legal a{color:#C3D2DE}
+
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .area:hover,.bonus__item:hover .cover{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<!-- ======================= HEADER ======================= -->
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="#topo" aria-label="JuriPrático IA, página inicial">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 10h24v10H22v22h14v10H12z" fill="currentColor"/><path d="M42 10h10v42H28V42h14z" fill="currentColor"/></svg>
+      <b>JuriPrático <i>IA</i></b>
+    </a>
+    <nav aria-label="Seções da página">
+      <a href="#areas">Áreas</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#departamentos">Departamentos</a>
+      <a href="#bonus">Bônus</a>
+      <a href="#precos">Preços</a>
+      <a href="#faq">Perguntas</a>
+    </nav>
+    <a class="btn btn--sm" href="#precos">Ver planos</a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ======================= 01 · HERO ======================= -->
+<section class="hero" id="topo">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">IA prática para advogados</p>
+      <h1>Pare de começar do zero cada petição, contrato e parecer.</h1>
+      <p class="lede">50 skills prontas para instalar na IA que você já usa, organizadas nos 5 departamentos do escritório. Você entrega o caso — recebe a primeira versão estruturada para revisar e assinar.</p>
+      <p class="hero__meta">
+        <span>Pagamento único</span> <i aria-hidden="true">·</i> <span>Acesso vitalício</span> <i aria-hidden="true">·</i> <span>30 dias de garantia</span>
+      </p>
+      <div class="hero__cta">
+        <a class="btn" href="#precos">Montar meu escritório agora <svg class="arw" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn btn--ghost" href="#como-funciona">Ver como funciona</a>
+      </div>
+      <p class="compat">Compatível com <span>Claude · ChatGPT · Gemini</span></p>
+    </div>
+
+    <!-- AD 1 · COMPOSIÇÃO-PRODUTO -->
+    <div class="hero__art">
+      <div class="scene">
+        <svg viewBox="0 0 820 520" role="img" aria-label="Cena de trabalho: monitor exibindo os cinco departamentos do JuriPrático IA, com laptop, tablet e celular ao redor, além de códigos, pastas rotuladas, caneta e óculos sobre a mesa.">
+          <defs>
+            <linearGradient id="gScreen" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F7F8FA"/>
+            </linearGradient>
+          </defs>
+
+          <!-- sombra de apoio -->
+          <ellipse cx="410" cy="486" rx="360" ry="22" fill="#17324D" opacity=".07"/>
+
+          <!-- TABLET -->
+          <rect x="650" y="196" width="126" height="172" rx="12" fill="#244760"/>
+          <rect x="658" y="206" width="110" height="152" rx="5" fill="#FFFFFF"/>
+          <rect x="666" y="216" width="60" height="7" rx="3.5" fill="#17324D"/>
+          <rect x="666" y="232" width="94" height="20" rx="4" fill="#F7F8FA"/>
+          <rect x="666" y="258" width="94" height="20" rx="4" fill="#F7F8FA"/>
+          <rect x="666" y="284" width="94" height="20" rx="4" fill="#EAF6F7"/>
+          <rect x="666" y="310" width="94" height="20" rx="4" fill="#F7F8FA"/>
+          <rect x="666" y="336" width="52" height="10" rx="5" fill="#DCE2E7"/>
+
+          <!-- CELULAR -->
+          <rect x="688" y="380" width="66" height="118" rx="12" fill="#17324D"/>
+          <rect x="694" y="390" width="54" height="98" rx="5" fill="#FFFFFF"/>
+          <rect x="700" y="398" width="30" height="6" rx="3" fill="#17324D"/>
+          <rect x="700" y="410" width="42" height="13" rx="3" fill="#F7F8FA"/>
+          <rect x="700" y="428" width="42" height="13" rx="3" fill="#EAF6F7"/>
+          <rect x="700" y="446" width="42" height="13" rx="3" fill="#F7F8FA"/>
+          <rect x="700" y="466" width="42" height="13" rx="3" fill="#F7F8FA"/>
+
+          <!-- LAPTOP -->
+          <rect x="20" y="206" width="220" height="136" rx="10" fill="#244760"/>
+          <rect x="28" y="216" width="204" height="116" rx="4" fill="#FFFFFF"/>
+          <text x="38" y="234" font-family="Manrope, Arial, sans-serif" font-size="11" font-weight="800" fill="#17324D">CONTESTAÇÃO</text>
+          <rect x="38" y="242" width="70" height="5" rx="2.5" fill="#087F8C"/>
+          <rect x="38" y="256" width="184" height="5" rx="2.5" fill="#E2E8ED"/>
+          <rect x="38" y="268" width="168" height="5" rx="2.5" fill="#E2E8ED"/>
+          <rect x="38" y="280" width="90" height="5" rx="2.5" fill="#17324D" opacity=".55"/>
+          <rect x="38" y="292" width="184" height="5" rx="2.5" fill="#E2E8ED"/>
+          <rect x="38" y="304" width="150" height="5" rx="2.5" fill="#E2E8ED"/>
+          <rect x="38" y="316" width="60" height="7" rx="3.5" fill="#FFF4D8"/>
+          <path d="M16 342h228l16 20H0z" fill="#DCE2E7"/>
+          <rect x="96" y="348" width="68" height="5" rx="2.5" fill="#B9C4CD"/>
+
+          <!-- MONITOR -->
+          <rect x="352" y="336" width="116" height="14" rx="7" fill="#244760"/>
+          <rect x="392" y="308" width="36" height="30" fill="#2C5573"/>
+          <rect x="190" y="30" width="440" height="280" rx="14" fill="#17324D"/>
+          <rect x="206" y="46" width="408" height="248" rx="6" fill="url(#gScreen)"/>
+
+          <!-- SLOT data-shot="hero" · print real do Claude com a skill Contestação aberta.
+               Para usar, descomente e aponte o href para o arquivo:
+          <image href="assets/hero-contestacao.png" x="206" y="46" width="408" height="248" preserveAspectRatio="xMidYMid slice"/>
+          -->
+
+          <!-- barra do app -->
+          <rect x="206" y="46" width="408" height="34" fill="#FFFFFF"/>
+          <path d="M206 80h408" stroke="#DCE2E7" stroke-width="1"/>
+          <g transform="translate(218,54) scale(.28)" fill="#17324D">
+            <path d="M12 10h24v10H22v22h14v10H12z"/><path d="M42 10h10v42H28V42h14z"/>
+          </g>
+          <text x="240" y="68" font-family="Manrope, Arial, sans-serif" font-size="12" font-weight="800" fill="#17324D">JuriPrático IA</text>
+          <text x="602" y="68" text-anchor="end" font-family="Manrope, Arial, sans-serif" font-size="10" font-weight="600" fill="#7A8997">Departamentos</text>
+
+          <!-- 5 departamentos -->
+          <g font-family="Manrope, Arial, sans-serif">
+            <g>
+              <rect x="218" y="94" width="120" height="88" rx="8" fill="#FFFFFF" stroke="#DCE2E7"/>
+              <rect x="230" y="106" width="26" height="26" rx="6" fill="#EAF6F7"/>
+              <path d="M236 113h12M236 119h12M236 125h8" stroke="#066874" stroke-width="1.7" stroke-linecap="round"/>
+              <text x="230" y="152" font-size="13" font-weight="800" fill="#202832">Peças</text>
+              <text x="230" y="168" font-size="11" font-weight="600" fill="#526271">14 skills</text>
+            </g>
+            <g>
+              <rect x="350" y="94" width="120" height="88" rx="8" fill="#FFFFFF" stroke="#DCE2E7"/>
+              <rect x="362" y="106" width="26" height="26" rx="6" fill="#EDF4FD"/>
+              <path d="M368 112h14v14h-14z" fill="none" stroke="#245C91" stroke-width="1.7" stroke-linejoin="round"/>
+              <text x="362" y="152" font-size="13" font-weight="800" fill="#202832">Contratos</text>
+              <text x="362" y="168" font-size="11" font-weight="600" fill="#526271">11 skills</text>
+            </g>
+            <g>
+              <rect x="482" y="94" width="120" height="88" rx="8" fill="#FFFFFF" stroke="#DCE2E7"/>
+              <rect x="494" y="106" width="26" height="26" rx="6" fill="#EAF6F7"/>
+              <circle cx="504" cy="117" r="5" fill="none" stroke="#066874" stroke-width="1.7"/>
+              <path d="M508 121l5 5" stroke="#066874" stroke-width="1.7" stroke-linecap="round"/>
+              <text x="494" y="152" font-size="13" font-weight="800" fill="#202832">Pesquisa</text>
+              <text x="494" y="168" font-size="11" font-weight="600" fill="#526271">9 skills</text>
+            </g>
+            <g>
+              <rect x="218" y="194" width="120" height="88" rx="8" fill="#FFFFFF" stroke="#DCE2E7"/>
+              <rect x="230" y="206" width="26" height="26" rx="6" fill="#FFF4D8"/>
+              <circle cx="243" cy="219" r="6.5" fill="none" stroke="#805000" stroke-width="1.7"/>
+              <path d="M243 215v4.5l3 2" stroke="#805000" stroke-width="1.7" stroke-linecap="round"/>
+              <text x="230" y="252" font-size="13" font-weight="800" fill="#202832">Rotina</text>
+              <text x="230" y="268" font-size="11" font-weight="600" fill="#526271">9 skills</text>
+            </g>
+            <g>
+              <rect x="350" y="194" width="120" height="88" rx="8" fill="#FFFFFF" stroke="#DCE2E7"/>
+              <rect x="362" y="206" width="26" height="26" rx="6" fill="#EAF5EE"/>
+              <path d="M368 224l4-6 4 4 5-8" fill="none" stroke="#17613C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="362" y="252" font-size="13" font-weight="800" fill="#202832">Honorários</text>
+              <text x="362" y="268" font-size="11" font-weight="600" fill="#526271">7 skills</text>
+            </g>
+            <g>
+              <rect x="482" y="194" width="120" height="88" rx="8" fill="#17324D"/>
+              <text x="494" y="232" font-size="26" font-weight="800" fill="#80D5DC" letter-spacing="-1">50</text>
+              <text x="494" y="252" font-size="11" font-weight="700" fill="#FFFFFF">skills no total</text>
+              <text x="494" y="268" font-size="10" font-weight="600" fill="#B2C2CF">1.200 comandos</text>
+            </g>
+          </g>
+
+          <!-- CÓDIGOS EMPILHADOS -->
+          <g font-family="Manrope, Arial, sans-serif">
+            <rect x="44" y="448" width="176" height="20" rx="3" fill="#244760"/>
+            <rect x="50" y="452" width="8" height="12" fill="#80D5DC" opacity=".6"/>
+            <text x="66" y="462" font-size="9" font-weight="800" fill="#C3D2DE" letter-spacing="1">CÓDIGOS</text>
+            <rect x="52" y="426" width="176" height="20" rx="3" fill="#066874"/>
+            <rect x="58" y="430" width="8" height="12" fill="#EAF6F7" opacity=".7"/>
+            <text x="74" y="440" font-size="9" font-weight="800" fill="#EAF6F7" letter-spacing="1">VADE MECUM</text>
+            <rect x="48" y="404" width="176" height="20" rx="3" fill="#DCE2E7"/>
+            <rect x="54" y="408" width="8" height="12" fill="#7A8997"/>
+            <text x="70" y="418" font-size="9" font-weight="800" fill="#526271" letter-spacing="1">LEGISLAÇÃO</text>
+          </g>
+
+          <!-- PASTAS ROTULADAS -->
+          <g font-family="Manrope, Arial, sans-serif">
+            <rect x="252" y="396" width="228" height="76" rx="6" fill="#EDF0F3" stroke="#DCE2E7"/>
+            <rect x="260" y="400" width="212" height="16" rx="3" fill="#FFFFFF" stroke="#DCE2E7"/>
+            <text x="268" y="411" font-size="9" font-weight="800" fill="#17324D" letter-spacing="1.4">PEÇAS</text>
+            <rect x="260" y="418" width="212" height="16" rx="3" fill="#FFFFFF" stroke="#DCE2E7"/>
+            <text x="268" y="429" font-size="9" font-weight="800" fill="#17324D" letter-spacing="1.4">CONTRATOS</text>
+            <rect x="260" y="436" width="212" height="16" rx="3" fill="#FFFFFF" stroke="#DCE2E7"/>
+            <text x="268" y="447" font-size="9" font-weight="800" fill="#17324D" letter-spacing="1.4">PRAZOS</text>
+            <rect x="260" y="454" width="212" height="16" rx="3" fill="#087F8C"/>
+            <text x="268" y="465" font-size="9" font-weight="800" fill="#FFFFFF" letter-spacing="1.4">CLIENTES</text>
+          </g>
+
+          <!-- ÓCULOS -->
+          <g fill="none" stroke="#244760" stroke-width="3">
+            <rect x="498" y="398" width="42" height="28" rx="9"/>
+            <rect x="552" y="398" width="42" height="28" rx="9"/>
+            <path d="M540 410h12M498 406l-14-8M594 406l14-8" stroke-linecap="round"/>
+          </g>
+
+          <!-- CANETA -->
+          <g transform="rotate(-9 620 452)">
+            <rect x="574" y="446" width="78" height="11" rx="5.5" fill="#17324D"/>
+            <path d="M652 446l14 5.5-14 5.5z" fill="#087F8C"/>
+            <rect x="588" y="446" width="9" height="11" fill="#80D5DC" opacity=".8"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONTADORES 1 ======================= -->
+<section class="s s--surface" style="padding-block:clamp(28px,4vw,44px)" aria-label="Números do produto">
+  <div class="wrap">
+    <ul class="counters">
+      <li class="counter"><b>50</b><span>Skills</span></li>
+      <li class="counter"><b>1.200</b><span>Comandos</span></li>
+      <li class="counter"><b>5</b><span>Departamentos</span></li>
+      <li class="counter"><b>4</b><span>Áreas</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======================= 02 · ANTES / DEPOIS ======================= -->
+<section class="s" id="antes-depois">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="eyebrow">O problema, em uma noite comum</p>
+      <h2>Terça-feira, 22h40.</h2>
+    </div>
+    <div class="ba">
+      <article class="ba__col ba__col--before">
+        <span class="ba__stamp">22h40</span>
+        <h3>Antes</h3>
+        <p>A contestação está em branco. Você abre um modelo antigo de outro caso, apaga o que não serve, tenta lembrar como estruturou as preliminares da última vez. Uma hora depois, ainda está no relatório.</p>
+        <div class="ba__paper ba__paper--blank"><em>Documento em branco</em></div>
+      </article>
+      <article class="ba__col ba__col--after">
+        <span class="ba__stamp">22h42</span>
+        <h3>Depois</h3>
+        <p>Você cola os fatos e a inicial, escolhe a skill, e em dois minutos tem preliminares separadas do mérito, impugnação ponto a ponto e pedidos organizados. Aí sim começa seu trabalho: <strong>revisar e decidir</strong>.</p>
+        <div class="ba__paper">
+          <div class="grp">
+            <h6>I · Preliminares</h6>
+            <span class="bar bar--l"></span><span class="bar bar--m"></span>
+          </div>
+          <div class="grp">
+            <h6>II · Mérito · impugnação ponto a ponto</h6>
+            <span class="bar bar--l"></span><span class="bar bar--l"></span><span class="bar bar--s"></span>
+          </div>
+          <div class="grp">
+            <h6>III · Pedidos</h6>
+            <span class="bar bar--m"></span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 03 · PRA QUEM É ======================= -->
+<section class="s s--surface" id="areas">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="eyebrow">Pra quem é</p>
+      <h2>Feito para quem faz o escritório acontecer sozinho</h2>
+      <p class="lede">Quatro áreas com alto volume de peça repetida. A base é transversal e se adapta quando você informa os dados do caso.</p>
+    </div>
+    <ul class="areas" id="lista-areas">
+      <li class="area" data-area="trabalhista">
+        <span class="area__here">Sua área</span>
+        <span class="area__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"/></svg>
+        </span>
+        <h3>Trabalhista</h3>
+        <p>Reclamação, contestação, cálculo, recurso ordinário.</p>
+        <p class="area__tag">Volume alto e peça padronizada.</p>
+      </li>
+      <li class="area" data-area="previdenciario">
+        <span class="area__here">Sua área</span>
+        <span class="area__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg>
+        </span>
+        <h3>Previdenciário</h3>
+        <p>Requerimento, recurso ao INSS, análise de CNIS, ação previdenciária.</p>
+        <p class="area__tag">O mais repetitivo de todos.</p>
+      </li>
+      <li class="area" data-area="familia">
+        <span class="area__here">Sua área</span>
+        <span class="area__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3 20v-1.5A4.5 4.5 0 0 1 7.5 14h1A4.5 4.5 0 0 1 13 18.5V20M15.2 14.2h1.3a4 4 0 0 1 4 4V20"/></svg>
+        </span>
+        <h3>Família</h3>
+        <p>Divórcio, guarda, alimentos, inventário, partilha.</p>
+        <p class="area__tag">Documento sensível e recorrente.</p>
+      </li>
+      <li class="area" data-area="civel">
+        <span class="area__here">Sua área</span>
+        <span class="area__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13l2 2 4-4"/></svg>
+        </span>
+        <h3>Cível</h3>
+        <p>Contratos, consumidor, responsabilidade civil, cobrança.</p>
+        <p class="area__tag">A base mais ampla.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======================= 04 · COMO FUNCIONA ======================= -->
+<section class="s" id="como-funciona">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="eyebrow">Como funciona</p>
+      <h2>Quatro telas. É esse o produto inteiro.</h2>
+    </div>
+    <ol class="steps">
+
+      <li class="step">
+        <p class="step__n"><b>1</b> Abra o departamento</p>
+        <div class="shot" data-shot="passo-1">
+          <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><b>JuriPrático IA</b></div>
+          <div class="shot__body">
+            <p class="shot__title">Departamentos</p>
+            <p class="shot__sub">5 departamentos · 50 skills</p>
+            <div class="shot__grid">
+              <div class="shot__tile">Peças<em>14 skills</em></div>
+              <div class="shot__tile">Contratos<em>11 skills</em></div>
+              <div class="shot__tile">Pesquisa<em>9 skills</em></div>
+              <div class="shot__tile">Rotina<em>9 skills</em></div>
+              <div class="shot__tile">Honorários<em>7 skills</em></div>
+              <div class="shot__tile">Bônus<em>5 materiais</em></div>
+            </div>
+          </div>
+        </div>
+        <p>Peças, Contratos, Pesquisa, Rotina ou Honorários.</p>
+      </li>
+
+      <li class="step">
+        <p class="step__n"><b>2</b> Escolha a skill</p>
+        <div class="shot" data-shot="passo-2">
+          <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><b>Peças Processuais</b></div>
+          <div class="shot__body">
+            <p class="shot__title">Peças Processuais</p>
+            <p class="shot__sub">14 skills</p>
+            <div class="shot__row">Contestação <span>Trabalhista</span></div>
+            <div class="shot__row">Reclamação trabalhista <span>Trabalhista</span></div>
+            <div class="shot__row">Recurso ao INSS <span>Previdenciário</span></div>
+            <div class="shot__row">Petição de divórcio <span>Família</span></div>
+            <div class="shot__row">Ação de cobrança <span>Cível</span></div>
+          </div>
+        </div>
+        <p>Cada skill corresponde a uma tarefa concreta do dia.</p>
+      </li>
+
+      <li class="step">
+        <p class="step__n"><b>3</b> Responda o briefing</p>
+        <div class="shot" data-shot="passo-3">
+          <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><b>Briefing guiado</b></div>
+          <div class="shot__body">
+            <p class="shot__title">Contestação</p>
+            <p class="shot__sub">Etapa 1 de 3 · dados do caso</p>
+            <div class="shot__field"><label>Fatos narrados na inicial</label><div>Colar o texto da inicial…</div></div>
+            <div class="shot__field"><label>Documentos que você já tem</label><div>Contrato, holerites, CTPS…</div></div>
+            <div class="shot__field"><label>Teses que pretende sustentar</label><div>Descrever em uma linha…</div></div>
+          </div>
+        </div>
+        <p>Ela pergunta o que precisa saber, em vez de você adivinhar o comando.</p>
+      </li>
+
+      <li class="step">
+        <p class="step__n"><b>4</b> Receba a versão</p>
+        <div class="shot" data-shot="passo-4">
+          <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><b>Primeira versão</b></div>
+          <div class="shot__body">
+            <div class="shot__doc">
+              <h5>I · Preliminares</h5>
+              <span class="bar bar--l"></span><span class="bar bar--m"></span>
+              <h5 style="margin-top:12px">II · Mérito</h5>
+              <span class="bar bar--l"></span><span class="bar bar--s"></span>
+              <p style="margin:8px 0 0"><span class="mark">[CONFERIR]</span> validar a referência antes de usar</p>
+            </div>
+          </div>
+        </div>
+        <p>Com o que depende de você marcado no próprio texto.</p>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+<!-- ======================= 05 · OS 5 DEPARTAMENTOS ======================= -->
+<section class="s s--surface" id="departamentos">
+  <div class="wrap wrap--narrow">
+      <div class="s-head">
+        <p class="eyebrow">O catálogo</p>
+        <h2>Cinco departamentos, cinquenta skills</h2>
+        <p class="lede">Toque em um departamento para ver o que tem dentro.</p>
+      </div>
+
+      <!-- EDITORIAL: exemplos ilustrativos. Substituir pela lista real de skills. -->
+      <details class="dept">
+        <summary><span class="dept__name">Peças Processuais</span><span class="dept__count">14 skills</span><svg class="dept__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="dept__body">
+          <p>Alguns exemplos deste departamento</p>
+          <ul class="dept__list">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Contestação</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Reclamação trabalhista</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Recurso ordinário</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Requerimento ao INSS</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ação previdenciária</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Petição de divórcio</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alimentos e guarda</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ação de cobrança</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="dept">
+        <summary><span class="dept__name">Contratos e Consultivo</span><span class="dept__count">11 skills</span><svg class="dept__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="dept__body">
+          <p>Alguns exemplos deste departamento</p>
+          <ul class="dept__list">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Contrato de prestação de serviços</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Revisão de cláusulas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Parecer consultivo</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Notificação extrajudicial</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Acordo e distrato</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Checklist de risco contratual</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="dept">
+        <summary><span class="dept__name">Pesquisa e Análise</span><span class="dept__count">9 skills</span><svg class="dept__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="dept__body">
+          <p>Alguns exemplos deste departamento</p>
+          <ul class="dept__list">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Resumo de processo</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Análise de CNIS</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Organização da cronologia dos fatos</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Roteiro de busca de precedentes</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Comparativo de teses</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Checklist documental</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="dept">
+        <summary><span class="dept__name">Rotina do Escritório</span><span class="dept__count">9 skills</span><svg class="dept__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="dept__body">
+          <p>Alguns exemplos deste departamento</p>
+          <ul class="dept__list">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Controle de prazos</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Roteiro de atendimento</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>E-mail para o cliente</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Relatório de andamento</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Organização da pasta do caso</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ata de reunião</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="dept">
+        <summary><span class="dept__name">Captação e Honorários</span><span class="dept__count">7 skills</span><svg class="dept__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="dept__body">
+          <p>Alguns exemplos deste departamento</p>
+          <ul class="dept__list">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Proposta de honorários</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Contrato de honorários</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Resposta a primeiro contato</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Apresentação do escritório</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Planilha de cobrança</li>
+          </ul>
+        </div>
+      </details>
+  </div>
+</section>
+
+<!-- ======================= 06 · JURISPRUDÊNCIA (escura) ======================= -->
+<section class="s s--dark" id="confianca">
+  <div class="wrap trust">
+    <div>
+      <p class="eyebrow">Confiança</p>
+      <h2>Nenhuma skill inventa jurisprudência.</h2>
+      <p>Você já viu as notícias de advogado punido por peticionar com precedente que a IA inventou.</p>
+      <p>Todas as skills são instruídas a <strong>nunca criar número de processo, súmula ou artigo de lei</strong>. Onde entra referência, vem marcado <strong>[CONFERIR]</strong> — não preenchido por chute.</p>
+      <div class="note">
+        <p>A responsabilidade continua sendo sua. O que muda é que o trabalho não começa mais numa página em branco.</p>
+      </div>
+    </div>
+    <div class="docshot" data-shot="conferir">
+      <div class="docshot__hd"><span>Primeira versão</span><span>Revisão necessária</span></div>
+      <h4>II — DO MÉRITO</h4>
+      <p>A tese sustentada na inicial não se sustenta diante dos documentos juntados, conforme se demonstra a seguir.</p>
+      <p>A orientação aplicável ao caso deve ser confirmada na fonte oficial antes do protocolo: <span class="mark--big">[CONFERIR — validar o precedente]</span></p>
+      <p>Os pedidos são impugnados um a um nos itens seguintes, com a documentação correspondente indicada em cada parágrafo.</p>
+      <p style="margin-bottom:0"><span class="mark--big">[CONFERIR — conferir data e número do documento]</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 07 · BÔNUS (escura) ======================= -->
+<section class="s s--darker" id="bonus">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="eyebrow">Bônus incluídos</p>
+      <h2>Cinco bônus, e dois deles ninguém mais tem</h2>
+    </div>
+    <ul class="bonus">
+      <li class="bonus__item">
+        <div class="cover" aria-hidden="true">
+          <span class="cover__pro">Só PRO</span>
+          <span class="cover__top"><span class="cover__kicker">Bônus 1</span><span class="cover__rule"></span></span>
+          <span class="cover__mid"><span class="cover__title">Guia de Conformidade OAB</span></span>
+          <span class="cover__foot">JuriPrático IA</span>
+        </div>
+        <div class="bonus__txt"><h3 class="bonus__name">Guia de Conformidade OAB</h3>
+        <p class="bonus__desc">O que pode e o que não pode em captação e divulgação, à luz do Provimento 205/2021.</p></div>
+      </li>
+      <li class="bonus__item">
+        <div class="cover" aria-hidden="true">
+          <span class="cover__pro">Só PRO</span>
+          <span class="cover__top"><span class="cover__kicker">Bônus 2</span><span class="cover__rule"></span></span>
+          <span class="cover__mid"><span class="cover__title">Protocolo de Sigilo e LGPD</span></span>
+          <span class="cover__foot">JuriPrático IA</span>
+        </div>
+        <div class="bonus__txt"><h3 class="bonus__name">Protocolo de Sigilo e LGPD</h3>
+        <p class="bonus__desc">Como anonimizar dados do cliente antes de usar qualquer IA.</p></div>
+      </li>
+      <li class="bonus__item">
+        <div class="cover" aria-hidden="true">
+          <span class="cover__top"><span class="cover__kicker">Bônus 3</span><span class="cover__rule"></span></span>
+          <span class="cover__mid"><span class="cover__title">Skill Mestre de Prazos</span></span>
+          <span class="cover__foot">JuriPrático IA</span>
+        </div>
+        <div class="bonus__txt"><h3 class="bonus__name">Skill Mestre de Prazos</h3>
+        <p class="bonus__desc">A instrução dedicada ao controle de prazos do escritório.</p></div>
+      </li>
+      <li class="bonus__item">
+        <div class="cover" aria-hidden="true">
+          <span class="cover__top"><span class="cover__kicker">Bônus 4</span><span class="cover__rule"></span></span>
+          <span class="cover__mid"><span class="cover__title">Versão para ChatGPT e Gemini</span></span>
+          <span class="cover__foot">JuriPrático IA</span>
+        </div>
+        <div class="bonus__txt"><h3 class="bonus__name">Versão para ChatGPT e Gemini</h3>
+        <p class="bonus__desc">As mesmas instruções adaptadas para outras ferramentas de IA.</p></div>
+      </li>
+      <li class="bonus__item">
+        <div class="cover" aria-hidden="true">
+          <span class="cover__top"><span class="cover__kicker">Bônus 5</span><span class="cover__rule"></span></span>
+          <span class="cover__mid"><span class="cover__title">Prompt Advogado Consultor</span></span>
+          <span class="cover__foot">JuriPrático IA</span>
+        </div>
+        <div class="bonus__txt"><h3 class="bonus__name">Prompt Advogado Consultor</h3>
+        <p class="bonus__desc">Para organizar o raciocínio antes de escrever a peça.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======================= 08 · PREÇOS (escura) ======================= -->
+<section class="s s--dark" id="precos">
+  <div class="wrap">
+
+    <ul class="counters" style="margin-bottom:clamp(36px,5vw,64px)">
+      <li class="counter"><b>50</b><span>Skills</span></li>
+      <li class="counter"><b>1.200</b><span>Comandos</span></li>
+      <li class="counter"><b>5</b><span>Bônus</span></li>
+      <li class="counter"><b>30</b><span>Dias de garantia</span></li>
+    </ul>
+
+    <div class="s-head">
+      <p class="eyebrow">Planos</p>
+      <h2>Escolha por onde começar</h2>
+    </div>
+
+    <div class="plans">
+      <article class="plan">
+        <div class="plan__top">
+          <h3 class="plan__name">Start</h3>
+          <span class="pill pill--plain">Essencial</span>
+        </div>
+        <p style="margin:0">
+          <span class="plan__old">R$ 397</span><br>
+          <span class="plan__price"><sup>R$</sup>27</span>
+        </p>
+        <p style="margin:0"><span class="plan__save">Você economiza R$ 370</span></p>
+        <p class="plan__what">10 skills de Peças, 150 comandos, guia de instalação, 2 bônus.</p>
+        <a class="btn btn--ghost" href="#comprar" style="border-color:#5E7E99;color:#EEF3F7">Começar no Start · R$27</a>
+        <p class="plan__note">Pagamento único</p>
+      </article>
+
+      <article class="plan plan--pro">
+        <div class="plan__top">
+          <h3 class="plan__name">PRO</h3>
+          <span class="pill pill--rec">Recomendado</span>
+          <span class="pill pill--gold">Mais completo</span>
+        </div>
+        <p style="margin:0">
+          <span class="plan__old">R$ 1.491</span><br>
+          <span class="plan__price"><sup>R$</sup>67</span>
+        </p>
+        <p style="margin:0"><span class="plan__save">Você economiza R$ 1.424</span></p>
+        <p class="plan__what">Tudo: 5 departamentos, 50 skills, 1.200 comandos, 40 modelos, 30 checklists, aulas, comunidade, atualizações e os 5 bônus.</p>
+        <a class="btn btn--onDark" href="#comprar">Instalar meu escritório · R$67 <svg class="arw" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p class="plan__note">Pagamento único · acesso vitalício</p>
+      </article>
+    </div>
+
+    <div class="cmp-wrap" role="region" aria-label="Comparativo entre os planos Start e PRO" tabindex="0">
+      <table class="cmp">
+        <caption>O que entra em cada plano</caption>
+        <thead>
+          <tr><th scope="col">Item</th><th scope="col">Start</th><th scope="col">PRO</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Skills</th><td>10</td><td>50</td></tr>
+          <tr><th scope="row">Departamentos</th><td>1 · Peças</td><td>5</td></tr>
+          <tr><th scope="row">Comandos</th><td>150</td><td>1.200</td></tr>
+          <tr><th scope="row">Guia de instalação</th><td class="yes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Incluído</span></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Incluído</span></td></tr>
+          <tr><th scope="row">Modelos prontos</th><td class="no"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only">Não incluído</span></td><td>40</td></tr>
+          <tr><th scope="row">Checklists</th><td class="no"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only">Não incluído</span></td><td>30</td></tr>
+          <tr><th scope="row">Aulas de uso</th><td class="no"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only">Não incluído</span></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Incluído</span></td></tr>
+          <tr><th scope="row">Comunidade</th><td class="no"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only">Não incluído</span></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Incluído</span></td></tr>
+          <tr><th scope="row">Atualizações</th><td class="no"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only">Não incluído</span></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Incluído</span></td></tr>
+          <tr><th scope="row">Bônus</th><td>2</td><td>5</td></tr>
+          <tr><th scope="row">Guia de Conformidade OAB</th><td class="no"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only">Não incluído</span></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Incluído</span></td></tr>
+          <tr><th scope="row">Protocolo de Sigilo e LGPD</th><td class="no"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only">Não incluído</span></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Incluído</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cmp-hint">Arraste a tabela para o lado para comparar os dois planos.</p>
+  </div>
+</section>
+
+<!-- ======================= 09 · FLUXO + GARANTIA ======================= -->
+<section class="s s--surface" id="comprar">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="eyebrow">Compra e acesso</p>
+      <h2>Do pagamento ao primeiro uso em dez minutos</h2>
+    </div>
+    <ol class="flow">
+      <li>
+        <span class="flow__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v12H4z"/><path d="M8 11h8M8 15h5"/></svg></span>
+        <b>Passo 1</b><span>Escolha o plano</span>
+      </li>
+      <li>
+        <span class="flow__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10.5h18M7 15h3"/></svg></span>
+        <b>Passo 2</b><span>Pague no Pix ou cartão</span>
+      </li>
+      <li>
+        <span class="flow__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
+        <b>Passo 3</b><span>Receba o acesso no e-mail</span>
+      </li>
+      <li>
+        <span class="flow__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11M8 10.5l4 3.5 4-3.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
+        <b>Passo 4</b><span>Instale seguindo o guia ilustrado</span>
+      </li>
+    </ol>
+
+    <div class="guar">
+      <div class="seal" role="img" aria-label="Selo de 30 dias de garantia">
+        <p style="margin:0"><b>30</b><span>Dias de garantia</span></p>
+      </div>
+      <div class="guar__txt">
+        <h3>30 dias de garantia. O risco é todo nosso.</h3>
+        <p>Use nas suas próximas três peças. Se não valer, peça o reembolso e receba 100% de volta — sem justificativa e sem ninguém tentando te convencer do contrário.</p>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin:clamp(32px,4vw,48px) auto 0">
+      <a class="btn" href="#precos">Instalar meu escritório · R$67 <svg class="arw" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </p>
+  </div>
+</section>
+
+<!-- ======================= 10 · FAQ ======================= -->
+<section class="s" id="faq">
+  <div class="wrap wrap--narrow">
+    <div class="s-head">
+      <p class="eyebrow">Perguntas</p>
+      <h2>O que os advogados perguntam antes de comprar</h2>
+    </div>
+
+    <details class="faq">
+      <summary><span class="faq__q">Isso fere alguma regra da OAB?</span><svg class="faq__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+      <div class="faq__a"><p>Não — é ferramenta de trabalho interno, não publicidade. E o Guia de Conformidade explica os limites do Provimento 205/2021.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary><span class="faq__q">E o sigilo dos meus clientes?</span><svg class="faq__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+      <div class="faq__a"><p>Por isso o Protocolo de Sigilo e LGPD vem incluso.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary><span class="faq__q">Preciso pagar a IA à parte?</span><svg class="faq__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+      <div class="faq__a"><p>Sim, o plano pago é contratado direto com a ferramenta. Os bônus trazem versões para ChatGPT e Gemini.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary><span class="faq__q">Não sou bom com tecnologia.</span><svg class="faq__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+      <div class="faq__a"><p>Instalação é copiar e colar, com guia ilustrado. Dez minutos, uma vez só.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary><span class="faq__q">Funciona na minha área?</span><svg class="faq__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+      <div class="faq__a"><p>A base é transversal e se adapta quando você informa os dados do caso.</p></div>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================= RODAPÉ ======================= -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__top">
+      <a class="logo" href="#topo">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 10h24v10H22v22h14v10H12z" fill="currentColor"/><path d="M42 10h10v42H28V42h14z" fill="currentColor"/></svg>
+        <b>JuriPrático <i>IA</i></b>
+      </a>
+      <nav class="ft__nav" aria-label="Rodapé">
+        <a href="#areas">Áreas</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#departamentos">Departamentos</a>
+        <a href="#bonus">Bônus</a>
+        <a href="#precos">Preços</a>
+        <a href="#faq">Perguntas</a>
+      </nav>
+    </div>
+
+    <div class="disclaimer">
+      <h4>Informações importantes</h4>
+      <p>Este produto é um acesso digital que disponibiliza instruções de configuração (skills) para uso em ferramentas de inteligência artificial de terceiros, contratadas separadamente pelo usuário. Os resultados variam conforme o uso. O material não substitui o julgamento técnico do advogado habilitado, não constitui consultoria jurídica e não dispensa a revisão profissional de todo conteúdo gerado. Este produto não possui vínculo institucional com a Anthropic, a OpenAI ou o Google.</p>
+    </div>
+
+    <p class="ft__legal">JuriPrático IA · IA prática para advogados · <a href="mailto:contato@juripraticoia.com.br">contato@juripraticoia.com.br</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Deep link por área: ?a=trabalhista|previdenciario|familia|civel
+     Sobe o card da área para o topo do grid e o destaca. Mesma página,
+     mesmo conteúdo — só a ordem e a ênfase mudam. */
+  var ALIAS = {
+    trabalhista: 'trabalhista', trabalho: 'trabalhista',
+    previdenciario: 'previdenciario', previdenciário: 'previdenciario',
+    inss: 'previdenciario', previdencia: 'previdenciario',
+    familia: 'familia', família: 'familia',
+    civel: 'civel', cível: 'civel', civil: 'civel'
+  };
+
+  function normalize(v) {
+    if (!v) return '';
+    v = String(v).toLowerCase().trim();
+    if (v.normalize) v = v.normalize('NFD').replace(/[̀-ͯ]/g, '');
+    return v;
+  }
+
+  try {
+    var q = new URLSearchParams(window.location.search).get('a');
+    var key = ALIAS[normalize(q)];
+    if (key) {
+      var card = document.querySelector('.area[data-area="' + key + '"]');
+      if (card) card.setAttribute('data-featured', '');
+    }
+  } catch (e) { /* sem querystring utilizável: a página segue igual */ }
+
+  /* Acordeão: um departamento aberto por vez. O FAQ permite vários,
+     porque as respostas são comparadas entre si. */
+  var depts = Array.prototype.slice.call(document.querySelectorAll('details.dept'));
+  depts.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      depts.forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+})();
+</script>
+</body>
+</html>
