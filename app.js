@@ -10,6 +10,7 @@ const CHECKOUT_START       = "#";     // trocar pela URL real do checkout do Sta
 const CHECKOUT_PRO         = "#";     // trocar pela URL real do checkout do PRO (R$67)
 const DEPOIMENTOS_PRONTOS  = false;   // só true com depoimentos reais e autorizados por escrito
 const AREA_PADRAO          = null;    // null = ordem padrão dos cards
+const HERO_FOTO            = null;    // ex.: "hero-produto.jpg" — null usa a cena em HTML/CSS
 
 /* Os seis depoimentos. Só entram na página pessoas reais, com autorização de uso do
    depoimento e da imagem assinada — ver DEPOIMENTOS.md. A foto é opcional: sem ela o
@@ -279,7 +280,23 @@ const DEPOIMENTOS = [];
     }
   }
 
-  /* ---------- 10. Ano do rodapé ---------- */
+  /* ---------- 10. Foto do hero: assume o lugar da cena quando o arquivo existir ---------- */
+  var foto = doc.getElementById('hero-foto');
+  var cenaHero = doc.querySelector('.hero-cena .cena');
+
+  if (foto && cenaHero && HERO_FOTO) {
+    foto.addEventListener('load', function () {
+      cenaHero.hidden = true;
+      foto.hidden = false;
+    });
+    // se o arquivo apontado não existir, a cena em HTML/CSS continua valendo
+    foto.addEventListener('error', function () { foto.remove(); });
+    foto.src = HERO_FOTO;
+  } else if (foto) {
+    foto.remove();
+  }
+
+  /* ---------- 11. Ano do rodapé ---------- */
   var ano = doc.getElementById('ano');
   if (ano) { ano.textContent = new Date().getFullYear(); }
 })();
